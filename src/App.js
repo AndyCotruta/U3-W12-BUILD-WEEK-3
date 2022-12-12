@@ -1,10 +1,19 @@
+import { Col, Container, Row } from "react-bootstrap";
 import "./App.css";
+import ProfileSection from "./components/ProfileSection";
+import "bootstrap/dist/css/bootstrap.min.css";
+import About from "./components/About";
 
 function App() {
   return (
-    <div className="body">
-      <h1>Welcome to Build Week LinkedIn</h1>
-    </div>
+    <Container>
+      <Row>
+        <Col sm={12}>
+          <ProfileSection />
+          <About />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

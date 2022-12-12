@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+globalFonts {
+  --main-font: "Lato", sans-serif;
+}
+
+colorPalette {
+  --linkedin-dark-blue: #0a66c2;
+  --linkedin-light-blue: #70b5f9;
+  --linkedin-grey: rgba(102, 102, 102, 0.6);
+  --linkedin-green: #7fc15e;
+  --linkedin-brown: #915907;
+  --linkedin-orange: #e7a33e;
+  --linkedin-salmon: #f5987e;
+  --linkedin-bg-off-white: #f3f2ef;
+  --linkedin-white: #ffffff;
+  --linkedin-black: rgba(0, 0, 0, 0.9);
+}

@@ -70,7 +70,7 @@ body {
 }
 
 p {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .username {
@@ -109,7 +109,7 @@ p {
 
 .first-button,
 .second-button,
-.third-button {
+.gray-button {
   height: 35px;
   font-size: 16px;
   font-weight: 700;
@@ -157,6 +157,8 @@ p {
 
 .third-button {
   width: 80px;
+}
+.gray-button {
   background-color: var(--linkedin-white);
   border: solid 1px var(--linkedin-grey);
   color: #646464;
@@ -226,7 +228,7 @@ p {
 .activity-status {
   font-size: 16px;
   font-weight: 800;
-  margin-block-start: 15px;
+  margin-block-start: 15px !important;
   margin-block-end: 0;
 }
 
@@ -245,8 +247,58 @@ p {
   font-weight: 700;
   color: #646464;
   cursor: pointer;
+  border-top: 1px solid #ededed;
+}
+
+.show-activity img {
+  width: 15px;
+  margin-inline-start: 5px;
 }
 .show-activity:hover {
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(241, 241, 241);
   transition: 0.3s;
+}
+
+/* --------Experience------- */
+
+.experience-section {
+  width: 100%;
+  background-color: var(--linkedin-white);
+  border: 1px solid var(--linkedin-grey);
+  margin-block-start: 10px;
+  border-radius: 10px;
+  padding: 24px;
+  font-family: var(--main-font);
+}
+
+.experience-content {
+  display: flex;
+  padding: 12px 0;
+}
+
+.experience-logo {
+  width: 56px;
+  height: 48px;
+}
+.experience-logo img {
+  width: 48px;
+}
+
+.bold-title {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.show-credential {
+  margin-block-start: 10px;
+  width: 170px;
+}
+
+.skills-logo img {
+  width: 24px;
+  margin-inline-end: 10px;
 }

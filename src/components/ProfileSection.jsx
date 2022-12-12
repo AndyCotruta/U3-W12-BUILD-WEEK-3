@@ -29,7 +29,7 @@ const ProfileSection = () => {
             <img src={plus} alt="" />
             Follow
           </button>
-          <button className="third-button">More</button>
+          <button className="third-button gray-button">More</button>
         </div>
       </div>
     </div>

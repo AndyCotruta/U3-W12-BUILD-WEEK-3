@@ -73,43 +73,53 @@ p {
   margin: 0 !important;
 }
 
-.username {
+.fs-24 {
   font-size: 24px;
-  font-weight: 700;
-  margin: 0;
 }
-.user-role {
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-16 {
   font-size: 16px;
 }
-
-.contact-location {
-  display: flex;
-  margin-block: 10px;
-  align-items: center;
+.fs-14 {
+  font-size: 14px;
 }
 
-.location {
-  font-size: 14px;
+.fw-700 {
+  font-weight: 700;
+}
+.fw-800 {
+  font-weight: 800;
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.cd-width {
+  width: 782px;
+}
+
+.ff {
+  font-family: var(--main-font);
+}
+
+.cd {
+  background-color: var(--linkedin-white);
+  border: 1px solid var(--linkedin-grey);
+  margin-block-start: 10px;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.ld-grey {
   color: var(--linkedin-grey);
 }
 
-.contact-info {
-  margin-inline-start: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--linkedin-dark-blue);
-  cursor: pointer;
-}
-
-.profile-buttons {
-  display: flex;
-  width: 320px;
-  justify-content: space-between;
-}
-
-.first-button,
-.second-button,
-.gray-button {
+.ld-btn {
   height: 35px;
   font-size: 16px;
   font-weight: 700;
@@ -120,6 +130,28 @@ p {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+/* ----------- custom style --------------- */
+
+/* ------Profile Card------ */
+
+.contact-location {
+  margin-block: 10px;
+}
+
+.location {
+  color: var(--linkedin-grey);
+}
+
+.contact-info {
+  margin-inline-start: 10px;
+  color: var(--linkedin-dark-blue);
+  cursor: pointer;
+}
+
+.profile-buttons {
+  width: 320px;
 }
 
 .first-button {
@@ -173,84 +205,35 @@ p {
 
 /* ------------About-Section------- */
 
-.about-section {
-  width: 782px;
-  background-color: var(--linkedin-white);
-  border: 1px solid var(--linkedin-grey);
-  margin-block-start: 10px;
-  border-radius: 10px;
-  padding: 24px;
-}
-.about-text {
-  font-family: var(--main-font);
-}
-
 .about-title {
   margin-block-end: 10px;
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.about-content {
-  font-size: 14px;
 }
 
 /* 
 -------------Activity Section-------- */
 
-.cards-main-container {
-  width: 782px;
-}
-
 .activity-section {
-  width: 100%;
-  background-color: var(--linkedin-white);
-  border: 1px solid var(--linkedin-grey);
-  margin-block-start: 10px;
   border-radius: 10px 10px 0 0;
-  padding: 24px;
-  font-family: var(--main-font);
   border-bottom: none;
 }
 
-.activity-title {
-  margin-block-end: 10px;
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0;
-}
-
-.activity-followers {
-  font-size: 14px;
-  color: var(--linkedin-grey);
-}
-
 .activity-status {
-  font-size: 16px;
-  font-weight: 800;
   margin-block-start: 15px !important;
   margin-block-end: 0;
 }
 
-.activity-info {
-  font-size: 14px;
-}
-
-.show-activity {
+.cd-bottom-btn {
   background-color: white;
+  font-family: var(--main-font);
   padding: 10px 24px;
-  display: flex;
-  justify-content: center;
   border-radius: 0 0 10px 10px;
   border: 1px solid var(--linkedin-grey);
-  font-size: 16px;
-  font-weight: 700;
   color: #646464;
   cursor: pointer;
   border-top: 1px solid #ededed;
 }
 
-.show-activity img {
+.icon {
   width: 15px;
   margin-inline-start: 5px;
 }
@@ -260,16 +243,6 @@ p {
 }
 
 /* --------Experience------- */
-
-.experience-section {
-  width: 100%;
-  background-color: var(--linkedin-white);
-  border: 1px solid var(--linkedin-grey);
-  margin-block-start: 10px;
-  border-radius: 10px;
-  padding: 24px;
-  font-family: var(--main-font);
-}
 
 .experience-content {
   display: flex;
@@ -284,15 +257,6 @@ p {
   width: 48px;
 }
 
-.bold-title {
-  font-size: 16px;
-  font-weight: 800;
-}
-
-.font-14 {
-  font-size: 14px;
-}
-
 .show-credential {
   margin-block-start: 10px;
   width: 170px;
@@ -301,4 +265,21 @@ p {
 .skills-logo img {
   width: 24px;
   margin-inline-end: 10px;
+}
+
+/* ------Interests------ */
+
+.nav-link.active {
+  border: none;
+  color: #009688 !important;
+  background-color: #fff0;
+  border-color: #ffffff #ffffff #009688 !important;
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: #ffffff #ffffff #e4e4e4 !important;
+}
+
+a {
+  color: var(--linkedin-grey) !important;
 }

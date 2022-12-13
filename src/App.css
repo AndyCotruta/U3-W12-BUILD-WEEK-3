@@ -35,10 +35,14 @@ body {
   background-color: var(--linkedin-white-grey) !important;
 }
 
+.container {
+  max-width: 1200px !important;
+}
+
 .profile-main {
   width: 782px;
   border-radius: 10px;
-  border: solid 1px var(--linkedin-grey);
+  border: solid 1px var(--linkedin-white-grey);
   overflow: auto;
 }
 
@@ -196,8 +200,8 @@ svg {
 
 .cd {
   background-color: var(--linkedin-white);
-  border: 1px solid var(--linkedin-grey);
-  margin-block-start: 10px;
+  border: 1px solid var(--linkedin-white-grey);
+  margin-block-start: 0.25em;
   border-radius: 10px;
   padding: 24px;
 }
@@ -314,7 +318,7 @@ svg {
   font-family: var(--main-font);
   padding: 10px 24px;
   border-radius: 0 0 10px 10px;
-  border: 1px solid var(--linkedin-grey);
+  border: 1px solid var(--linkedin-white-grey);
   color: #646464;
   cursor: pointer;
   border-top: 1px solid #ededed;

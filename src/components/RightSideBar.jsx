@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Col, Container } from "react-bootstrap";
 import EditLi from "./EditLi";
 import ActionLi from "./ActionLi";
 import ProfileAd from "./ProfileAd";
@@ -10,39 +10,20 @@ import { fetchProfile } from "../redux/actions/actions";
 
 const RightSideBar = () => {
   const messageIcon = (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 16 16"
-      data-supported-dps="16x16"
-      fill="currentColor"
-      className="mercado-match"
-      width="16"
-      height="16"
-      focusable="false"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
       <path d="M14 2L0 6.67l5 2.64 5.67-3.98L6.7 11l2.63 5L14 2z"></path>
     </svg>
   );
 
   const dropdownIcon = (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 16 16"
-      data-supported-dps="16x16"
-      fill="currentColor"
-      className="mercado-match"
-      width="16"
-      height="16"
-      focusable="false"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
       <path d="M1 5l7 4.61L15 5v2.39L8 12 1 7.39z"></path>
     </svg>
   );
 
   const dispatch = useDispatch();
   const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4NGEyNzQwNWJkYTAwMTUwOTE4NDQiLCJpYXQiOjE2NzA5MjQ4MzksImV4cCI6MTY3MjEzNDQzOX0.x2Rft_8jW0eH4mFzHLq669IFCzGAFGCn7LuvHCf2udU";
+  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4NGEyNzQwNWJkYTAwMTUwOTE4NDQiLCJpYXQiOjE2NzA5MjQ4MzksImV4cCI6MTY3MjEzNDQzOX0.x2Rft_8jW0eH4mFzHLq669IFCzGAFGCn7LuvHCf2udU";
   const options = {
     method: "GET",
     headers: {
@@ -55,7 +36,7 @@ const RightSideBar = () => {
   }, []);
 
   return (
-    <Container>
+    <Col md={4}>
       <ul className="sidebarUL mb-1">
         <EditLi text="Edit public profile & URL" />
         <EditLi text="Add profile in another language" />
@@ -83,16 +64,7 @@ const RightSideBar = () => {
         <div className="fw-bold pt-3 fs-20">
           <div className="d-flex align-items-center">
             <span className="linkedin-d-blue mr-1">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 14 14"
-                data-supported-dps="14x14"
-                fill="currentColor"
-                class="mercado-match"
-                width="14"
-                height="14"
-                focusable="false"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" data-supported-dps="14x14" fill="currentColor" class="mercado-match" width="14" height="14" focusable="false">
                 <g>
                   <path
                     class="background-mercado"
@@ -122,7 +94,7 @@ const RightSideBar = () => {
         </div>
       </ul>
       <ActionLi text="See my recommendations" />
-    </Container>
+    </Col>
   );
 };
 

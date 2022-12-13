@@ -1,7 +1,7 @@
-
 import MainNavbar from "./components/MainNavbar";
 import MainFooter from "./components/MainFooter";
 import "bootstrap/dist/css/bootstrap.min.css";
+import RightSideBar from "./components/RightSideBar";
 
 import { Col, Container, Row } from "react-bootstrap";
 
@@ -16,24 +16,16 @@ function App() {
       <Row>
         <Col sm={12}>
           <UserProfile />
+
+          <MainNavbar />
+
+          <MainFooter />
+
+          <h1>Welcome to Build Week LinkedIn</h1>
+          <RightSideBar />
         </Col>
       </Row>
     </Container>
-
-import RightSideBar from "./components/RightSideBar";
-
-function App() {
-  return (
-    <div className="body">
-
-      <MainNavbar />
-
-      <MainFooter />
-
-      <h1>Welcome to Build Week LinkedIn</h1>
-      <RightSideBar />
-
-    </div>
   );
 }
 

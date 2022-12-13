@@ -4,6 +4,9 @@ import ActionLi from "./ActionLi";
 import ProfileAd from "./ProfileAd";
 import ProfilesLi from "./ProfilesLi";
 import CoursesLi from "./CoursesLi";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchProfile } from "../redux/actions/actions";
 
 const RightSideBar = () => {
   const messageIcon = (
@@ -12,7 +15,7 @@ const RightSideBar = () => {
       viewBox="0 0 16 16"
       data-supported-dps="16x16"
       fill="currentColor"
-      class="mercado-match"
+      className="mercado-match"
       width="16"
       height="16"
       focusable="false"
@@ -27,7 +30,7 @@ const RightSideBar = () => {
       viewBox="0 0 16 16"
       data-supported-dps="16x16"
       fill="currentColor"
-      class="mercado-match"
+      className="mercado-match"
       width="16"
       height="16"
       focusable="false"
@@ -35,6 +38,21 @@ const RightSideBar = () => {
       <path d="M1 5l7 4.61L15 5v2.39L8 12 1 7.39z"></path>
     </svg>
   );
+
+  const dispatch = useDispatch();
+  const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4NGEyNzQwNWJkYTAwMTUwOTE4NDQiLCJpYXQiOjE2NzA5MjQ4MzksImV4cCI6MTY3MjEzNDQzOX0.x2Rft_8jW0eH4mFzHLq669IFCzGAFGCn7LuvHCf2udU";
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + accessToken,
+    },
+  };
+
+  useEffect(() => {
+    dispatch(fetchProfile(endPoint, options));
+  }, []);
 
   return (
     <Container>

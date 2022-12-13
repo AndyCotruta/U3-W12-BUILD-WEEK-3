@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import localStorage from "redux-persist/lib/storage";
-import mainReducer from "../reducers/mainReducer";
 import { persistReducer, persistStore } from "redux-persist";
+import profilesReducer from "../reducers/mainReducer";
 
 const persistConfig = {
   key: "root",
@@ -9,7 +9,7 @@ const persistConfig = {
 };
 
 const bigReducer = combineReducers({
-  mainReducer: mainReducer,
+  profiles: profilesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

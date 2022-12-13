@@ -2,6 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import localStorage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import profilesReducer from "../reducers/mainReducer";
+import experienceReducer from "../reducers/experienceReducer";
 
 const persistConfig = {
   key: "root",
@@ -10,6 +11,7 @@ const persistConfig = {
 
 const bigReducer = combineReducers({
   profiles: profilesReducer,
+  experience: experienceReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

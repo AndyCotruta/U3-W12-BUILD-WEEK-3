@@ -1,9 +1,14 @@
+import MainNavbar from "./components/MainNavbar";
+import MainFooter from "./components/MainFooter";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 function App() {
   return (
     <div className="body">
-      <h1>Welcome to Build Week LinkedIn</h1>
+      <MainNavbar />
+
+      <MainFooter />
     </div>
   );
 }

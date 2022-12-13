@@ -3,8 +3,8 @@
 globalFonts {
   --main-font: "Lato", sans-serif;
 }
-
-colorPalette {
+:root {
+  /*color palette*/
   --linkedin-dark-blue: #0a66c2;
   --linkedin-light-blue: #70b5f9;
   --linkedin-grey: rgba(102, 102, 102, 0.6);
@@ -15,4 +15,8 @@ colorPalette {
   --linkedin-bg-off-white: #f3f2ef;
   --linkedin-white: #ffffff;
   --linkedin-black: rgba(0, 0, 0, 0.9);
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: var(--linkedin-bg-off-white);
 }

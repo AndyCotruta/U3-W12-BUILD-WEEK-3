@@ -1,0 +1,23 @@
+.footer-main {
+  color: var(--linkedin-grey);
+  display: flex;
+  justify-content: center;
+}
+.list-group-item {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: none;
+  font-size: 12px;
+  line-height: 10px;
+  font-weight: 500;
+}
+.DropdownButton {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: none;
+  font-size: 12px;
+  line-height: 10px;
+  font-weight: 500;
+}

@@ -43,16 +43,21 @@
 
 .profile-icon {
   width: 24px;
+  height: 24px;
   border-radius: 50%;
+}
+.work-icon {
+  width: 24px;
+  height: 24px;
 }
 
 .menu-size {
-  border: solid;
   width: 80px;
   height: 53px;
   display: flex;
   justify-content: center;
 }
+
 .profile-drop-down {
   display: flex;
   flex-direction: column;
@@ -93,4 +98,23 @@
 
 .nav-menu-icon {
   width: 24px;
+  filter: brightness(2.2);
+}
+
+.nav-text {
+  color: #777575;
+}
+.nav-text:hover {
+  color: #000000;
+}
+
+.premium {
+  color: var(--linkedin-brown);
+}
+
+.menu-size:hover .nav-menu-icon {
+  filter: brightness(1);
+}
+.menu-size:hover .nav-text {
+  color: #000000;
 }

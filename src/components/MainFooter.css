@@ -41,6 +41,11 @@
   justify-content: space-between;
   align-items: center;
   border: 1px solid gray;
+  padding-inline: 10px !important;
+  font-size: 12px;
+  height: 32px;
+  font-weight: 900;
+  font-family: inherit;
 }
 
 .show > .btn-primary.dropdown-toggle {

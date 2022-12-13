@@ -1,7 +1,12 @@
 import { Navbar, Nav, NavDropdown, FormControl, Form, Button, Container } from "react-bootstrap";
-import { BsLinkedin } from "react-icons/bs";
 import "./MainNavbar.css";
 import logomini from "../Icon/Logo-nav.svg";
+import home from "../Icon/Home.svg";
+import mynetwork from "../Icon/myNetwork.svg";
+import jobs from "../Icon/jobs.svg";
+import message from "../Icon/Message.svg";
+import notification from "../Icon/notification.svg";
+import work from "../Icon/work.svg";
 
 const MainNavbar = () => {
   return (
@@ -21,45 +26,45 @@ const MainNavbar = () => {
             <Nav.Link className="p-0">
               <div className=" d-flex flex-column align-items-center nav-icon menu-size">
                 <div>
-                  <img src={logomini} alt="" className="nav-menu-icon" />
+                  <img src={home} alt="" className="nav-menu-icon" />
                 </div>
-                <p className="fs-12">Home</p>
+                <p className="fs-12 nav-text">Home</p>
               </div>
             </Nav.Link>
             <Nav.Link className="p-0">
               <div className=" d-flex flex-column align-items-center nav-icon menu-size">
                 <div>
-                  <img src={logomini} alt="" className="nav-menu-icon" />
+                  <img src={mynetwork} alt="" className="nav-menu-icon" />
                 </div>
-                <p className="fs-12">My Network</p>
+                <p className="fs-12 nav-text">My Network</p>
               </div>
             </Nav.Link>
             <Nav.Link className="p-0">
               <div className=" d-flex flex-column align-items-center nav-icon menu-size">
                 <div>
-                  <img src={logomini} alt="" className="nav-menu-icon" />
+                  <img src={jobs} alt="" className="nav-menu-icon" />
                 </div>
-                <p className="fs-12">Jobs</p>
+                <p className="fs-12 nav-text">Jobs</p>
               </div>
             </Nav.Link>
             <Nav.Link className="p-0">
               <div className=" d-flex flex-column align-items-center nav-icon menu-size">
                 <div>
-                  <img src={logomini} alt="" className="nav-menu-icon" />
+                  <img src={message} alt="" className="nav-menu-icon" />
                 </div>
-                <p className="fs-12">Messaging</p>
+                <p className="fs-12 nav-text">Messaging</p>
               </div>
             </Nav.Link>
             <Nav.Link className="p-0">
               <div className=" d-flex flex-column align-items-center nav-icon menu-size">
                 <div>
-                  <img src={logomini} alt="" className="nav-menu-icon" />
+                  <img src={notification} alt="" className="nav-menu-icon" />
                 </div>
-                <p className="fs-12">Notifications</p>
+                <p className="fs-12 nav-text">Notifications</p>
               </div>
             </Nav.Link>
             <div className="profile-drop-down menu-size">
-              <img src={logomini} alt="" className="profile-icon" />
+              <img src="https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg" alt="" className="profile-icon" />
               <NavDropdown title="Me" id="basic-nav-dropdown" className="profile-name">
                 <NavDropdown.Item href="#action/3.1" className="dropdown-main-action">
                   Profile Name
@@ -101,8 +106,8 @@ const MainNavbar = () => {
               </NavDropdown>
             </div>
             <div className="profile-drop-down menu-size">
-              <img src={logomini} alt="" className="profile-icon" />
-              <NavDropdown title="Work" id="basic-nav-dropdown" className="profile-name">
+              <img src={work} alt="" className="nav-menu-icon" />
+              <NavDropdown title="Work" id="basic-nav-dropdown" className="profile-name ">
                 <NavDropdown.Item href="#action/3.1" className="dropdown-main-action">
                   Profile Name
                 </NavDropdown.Item>
@@ -111,8 +116,8 @@ const MainNavbar = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             </div>
-            <Nav.Link href="#premium" className="text-align-center">
-              Try premium for free!
+            <Nav.Link href="#premium" className="text-align-center ">
+              <p className="fs-14 fw-700 premium">Try premium for free!</p>
             </Nav.Link>
           </Nav>
         </div>

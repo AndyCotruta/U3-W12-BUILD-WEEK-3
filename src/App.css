@@ -1,13 +1,10 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
-
 
 globalFonts {
   --main-font: "Lato", sans-serif;
 }
 :root {
   /*color palette*/
-
 
   --linkedin-dark-blue: #0a66c2;
   --linkedin-light-blue: #70b5f9;
@@ -23,18 +20,14 @@ globalFonts {
   --linkedin-white: #ffffff;
   --linkedin-black: rgba(0, 0, 0, 0.9);
 
-
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: var(--linkedin-bg-off-white);
 
-
   /* / Fonts */
-
 
   --main-font: "Lato", sans-serif;
 }
-
 
 /* -------Main-Profile-Section---------- */
 
@@ -177,7 +170,6 @@ svg {
 .fs-12 {
   font-size: 12px;
 }
-
 
 .fs-14 {
   font-size: 14px;
@@ -377,7 +369,7 @@ svg {
 
 a {
   color: var(--linkedin-grey) !important;
-
+}
 .fs-16 {
   font-size: 16px;
 }
@@ -528,5 +520,4 @@ a {
 
 .courses-play-btn:hover {
   box-shadow: inset 0px 0px 0px 2px var(--linkedin-white);
-
 }

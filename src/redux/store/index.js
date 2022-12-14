@@ -3,6 +3,7 @@ import localStorage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import profilesReducer from "../reducers/profilesReducer";
 import experienceReducer from "../reducers/experienceReducer";
+import searchReducer from "../reducers/searchReducer";
 
 const persistConfig = {
   key: "root",
@@ -12,6 +13,7 @@ const persistConfig = {
 const bigReducer = combineReducers({
   profiles: profilesReducer,
   experience: experienceReducer,
+  search: searchReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

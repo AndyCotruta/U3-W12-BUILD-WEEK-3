@@ -40,7 +40,7 @@ const ProfilesLi = (props) => {
             className="fw-bold pointer"
             onClick={() => {
               navigate(`/profile/${props.profile._id}`);
-              dispatch(fetchProfile(id, action));
+              dispatch(fetchProfile(endPoint, options, id, action));
             }}
           >
             {props.profile.name} {props.profile.surname} |{" "}

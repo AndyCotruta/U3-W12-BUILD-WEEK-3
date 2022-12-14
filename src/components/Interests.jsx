@@ -1,4 +1,6 @@
-import { Tab, Tabs, Sonnet } from "react-bootstrap";
+import { Tab, Tabs } from "react-bootstrap";
+import Education from "./Education";
+
 const Interests = () => {
   return (
     <div className="interests-section ">
@@ -6,18 +8,18 @@ const Interests = () => {
       <div className="skills-content d-flex-column">
         <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
           <Tab eventKey="home" title="Top Voices">
-            <div>
-              <h1>rteretree</h1>
+            <div className="mt-3">
+              <Education />
             </div>
           </Tab>
           <Tab eventKey="profile" title="Companies">
-            <div>
-              <h1>rteretree</h1>
+            <div className="mt-3">
+              <Education />
             </div>
           </Tab>
           <Tab eventKey="contact" title="Groups">
-            <div>
-              <h1>rteretreererererreree</h1>
+            <div className="mt-3">
+              <Education />
             </div>
           </Tab>
         </Tabs>

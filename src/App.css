@@ -340,12 +340,21 @@ svg {
   justify-content: space-between;
 }
 .experience-buttons {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   align-items: center;
   border: none;
   background-color: white;
+}
+.experience-buttons-icon {
+  height: 25px;
+  width: 25px;
+  color: var(--linkedin-dark-grey);
+  justify-content: center;
+  align-self: center;
+  padding: 0%;
+  margin: auto;
 }
 .experience-buttons:hover {
   background-color: var(--linkedin-bg-off-white);

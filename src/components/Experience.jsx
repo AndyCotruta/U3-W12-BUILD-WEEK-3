@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { getExperienceAction } from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { HiOutlinePlus } from "react-icons/hi";
+import { HiOutlinePencil } from "react-icons/hi";
 
 const Experience = () => {
   const experiences = useSelector((state) => state.experience.expData);
@@ -17,8 +19,12 @@ const Experience = () => {
         {/* this gets displayed when on user page */}
         <div>
           {" "}
-          <button className="experience-buttons">+</button>
-          <button className="experience-buttons">-</button>
+          <button className="experience-buttons">
+            <HiOutlinePlus className="experience-buttons-icon" />
+          </button>
+          <button className="experience-buttons">
+            <HiOutlinePencil className="experience-buttons-icon" />
+          </button>
         </div>
         {/* end here */}
       </div>

@@ -4,26 +4,45 @@ import ActionLi from "./ActionLi";
 import ProfileAd from "./ProfileAd";
 import ProfilesLi from "./ProfilesLi";
 import CoursesLi from "./CoursesLi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchProfile } from "../redux/actions/actions";
 
 const RightSideBar = () => {
   const messageIcon = (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+      data-supported-dps="16x16"
+      fill="currentColor"
+      className="mercado-match"
+      width="16"
+      height="16"
+      focusable="false"
+    >
       <path d="M14 2L0 6.67l5 2.64 5.67-3.98L6.7 11l2.63 5L14 2z"></path>
     </svg>
   );
 
   const dropdownIcon = (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+      data-supported-dps="16x16"
+      fill="currentColor"
+      className="mercado-match"
+      width="16"
+      height="16"
+      focusable="false"
+    >
       <path d="M1 5l7 4.61L15 5v2.39L8 12 1 7.39z"></path>
     </svg>
   );
 
   const dispatch = useDispatch();
   const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
-  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4NGEyNzQwNWJkYTAwMTUwOTE4NDQiLCJpYXQiOjE2NzA5MjQ4MzksImV4cCI6MTY3MjEzNDQzOX0.x2Rft_8jW0eH4mFzHLq669IFCzGAFGCn7LuvHCf2udU";
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4NGEyNzQwNWJkYTAwMTUwOTE4NDQiLCJpYXQiOjE2NzA5MjQ4MzksImV4cCI6MTY3MjEzNDQzOX0.x2Rft_8jW0eH4mFzHLq669IFCzGAFGCn7LuvHCf2udU";
   const options = {
     method: "GET",
     headers: {
@@ -35,6 +54,8 @@ const RightSideBar = () => {
     dispatch(fetchProfile(endPoint, options));
   }, []);
 
+  const allProfiles = useSelector((state) => state.profiles.allProfiles);
+
   return (
     <Col md={4}>
       <ul className="sidebarUL mb-1">
@@ -44,27 +65,32 @@ const RightSideBar = () => {
       <ProfileAd />
       <ul className="sidebarUL profilesUL mb-0">
         <div className="fw-bold pt-3 fs-20">People also viewed</div>
-        <ProfilesLi icon={messageIcon} />
-        <ProfilesLi icon={messageIcon} />
-        <ProfilesLi icon={messageIcon} />
-        <ProfilesLi icon={messageIcon} />
-        <ProfilesLi icon={messageIcon} />
+        {allProfiles.slice(0, 5).map((profile) => (
+          <ProfilesLi icon={messageIcon} profile={profile} />
+        ))}
       </ul>
       <ActionLi text="Show More" icon={dropdownIcon} />
       <ul className="sidebarUL profilesUL mb-0">
         <div className="fw-bold pt-3 fs-20">People you may know</div>
-        <ProfilesLi icon={messageIcon} />
-        <ProfilesLi icon={messageIcon} />
-        <ProfilesLi icon={messageIcon} />
-        <ProfilesLi icon={messageIcon} />
-        <ProfilesLi icon={messageIcon} />
+        {allProfiles.slice(0, 5).map((profile) => (
+          <ProfilesLi icon={messageIcon} profile={profile} />
+        ))}
       </ul>
       <ActionLi text="Show More" icon={dropdownIcon} />
       <ul className="sidebarUL profilesUL mb-0">
         <div className="fw-bold pt-3 fs-20">
           <div className="d-flex align-items-center">
             <span className="linkedin-d-blue mr-1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" data-supported-dps="14x14" fill="currentColor" class="mercado-match" width="14" height="14" focusable="false">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 14 14"
+                data-supported-dps="14x14"
+                fill="currentColor"
+                class="mercado-match"
+                width="14"
+                height="14"
+                focusable="false"
+              >
                 <g>
                   <path
                     class="background-mercado"

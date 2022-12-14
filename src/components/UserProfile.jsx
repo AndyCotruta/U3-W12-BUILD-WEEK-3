@@ -14,7 +14,7 @@ import MainFooter from "./MainFooter";
 const UserProfile = () => {
   return (
     <>
-      <Col md={8}>
+      <Col sm={12} md={6} lg={8}>
         <ProfileSection />
         <div className="cards-main-container cd-width">
           <AboutUser />
@@ -41,7 +41,7 @@ const UserProfile = () => {
           </div>
         </div>
       </Col>
-      <Col md={4}>
+      <Col sm={12} md={6} lg={4}>
         <RightSideBar />
       </Col>
     </>

@@ -119,14 +119,7 @@ const MainNavbar = () => {
             </div>
             <div className="profile-drop-down menu-size work">
               <img src={work} alt="" className="nav-menu-icon" />
-              <NavDropdown title="Work" id="basic-nav-dropdown" className="profile-name ">
-                <NavDropdown.Item href="#action/3.1" className="dropdown-main-action">
-                  Profile Name
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.1.1" className="dropdown-secondary-action">
-                  Profile Profession
-                </NavDropdown.Item>
-              </NavDropdown>
+              <NavDropdown title="Work" id="basic-nav-dropdown" className="profile-name "></NavDropdown>
             </div>
             <Nav.Link href="#premium" className="text-align-center ">
               <p className="fs-14 fw-700 premium">Try premium for free!</p>

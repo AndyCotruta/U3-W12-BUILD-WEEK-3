@@ -6,7 +6,7 @@ import ProfilesLi from "./ProfilesLi";
 import CoursesLi from "./CoursesLi";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchProfile } from "../redux/actions/actions";
+import { ADD_ALL_PROFILES, fetchProfile } from "../redux/actions/actions";
 
 const RightSideBar = () => {
   const messageIcon = (
@@ -40,18 +40,11 @@ const RightSideBar = () => {
   );
 
   const dispatch = useDispatch();
-  const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4NGEyNzQwNWJkYTAwMTUwOTE4NDQiLCJpYXQiOjE2NzA5MjQ4MzksImV4cCI6MTY3MjEzNDQzOX0.x2Rft_8jW0eH4mFzHLq669IFCzGAFGCn7LuvHCf2udU";
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer " + accessToken,
-    },
-  };
+
+  const action = ADD_ALL_PROFILES;
 
   useEffect(() => {
-    dispatch(fetchProfile(endPoint, options));
+    dispatch(fetchProfile(action));
   }, []);
 
   const allProfiles = useSelector((state) => state.profiles.allProfiles);
@@ -66,14 +59,14 @@ const RightSideBar = () => {
       <ul className="sidebarUL profilesUL mb-0">
         <div className="fw-bold pt-3 fs-20">People also viewed</div>
         {allProfiles.slice(0, 5).map((profile) => (
-          <ProfilesLi icon={messageIcon} profile={profile} />
+          <ProfilesLi icon={messageIcon} profile={profile} key={profile._id} />
         ))}
       </ul>
       <ActionLi text="Show More" icon={dropdownIcon} />
       <ul className="sidebarUL profilesUL mb-0">
         <div className="fw-bold pt-3 fs-20">People you may know</div>
         {allProfiles.slice(0, 5).map((profile) => (
-          <ProfilesLi icon={messageIcon} profile={profile} />
+          <ProfilesLi icon={messageIcon} profile={profile} key={profile._id} />
         ))}
       </ul>
       <ActionLi text="Show More" icon={dropdownIcon} />

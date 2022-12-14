@@ -35,10 +35,14 @@ body {
   background-color: var(--linkedin-white-grey) !important;
 }
 
+.container {
+  max-width: 1200px !important;
+}
+
 .profile-main {
   width: 782px;
   border-radius: 10px;
-  border: solid 1px var(--linkedin-grey);
+  border: solid 1px var(--linkedin-white-grey);
   overflow: auto;
 }
 
@@ -196,8 +200,8 @@ svg {
 
 .cd {
   background-color: var(--linkedin-white);
-  border: 1px solid var(--linkedin-grey);
-  margin-block-start: 10px;
+  border: 1px solid var(--linkedin-white-grey);
+  margin-block-start: 0.25em;
   border-radius: 10px;
   padding: 24px;
 }
@@ -314,7 +318,7 @@ svg {
   font-family: var(--main-font);
   padding: 10px 24px;
   border-radius: 0 0 10px 10px;
-  border: 1px solid var(--linkedin-grey);
+  border: 1px solid var(--linkedin-white-grey);
   color: #646464;
   cursor: pointer;
   border-top: 1px solid #ededed;
@@ -334,6 +338,31 @@ svg {
 .experience-content {
   display: flex;
   padding: 12px 0;
+}
+.experience-subsection {
+  display: flex;
+  justify-content: space-between;
+}
+.experience-buttons {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  align-items: center;
+  border: none;
+  background-color: white;
+}
+.experience-buttons-icon {
+  height: 25px;
+  width: 25px;
+  color: var(--linkedin-dark-grey);
+  justify-content: center;
+  align-self: center;
+  padding: 0%;
+  margin: auto;
+}
+.experience-buttons:hover {
+  background-color: var(--linkedin-bg-off-white);
+  cursor: pointer;
 }
 
 .experience-logo {
@@ -370,7 +399,6 @@ svg {
 a {
   color: var(--linkedin-grey) !important;
 }
-
 .fs-16 {
   font-size: 16px;
 }

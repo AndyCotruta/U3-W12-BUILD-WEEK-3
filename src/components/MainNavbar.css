@@ -96,6 +96,10 @@
   outline: none !important;
 }
 
+.search-position {
+  position: relative;
+}
+
 .nav-menu-icon {
   width: 24px;
   filter: brightness(2.2);

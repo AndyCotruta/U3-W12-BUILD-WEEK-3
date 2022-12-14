@@ -1,0 +1,83 @@
+:root {
+  /*color palette*/
+
+  --linkedin-dark-blue: #0a66c2;
+  --linkedin-light-blue: #70b5f9;
+  --linkedin-super-light-blue: #e3f0fe;
+  --linkedin-dark-grey: #00000099;
+  --linkedin-grey: rgba(102, 102, 102, 0.6);
+  --linkedin-white-grey: #e8e5df;
+  --linkedin-green: #7fc15e;
+  --linkedin-brown: #915907;
+  --linkedin-orange: #e7a33e;
+  --linkedin-salmon: #f5987e;
+  --linkedin-bg-off-white: #f3f2ee;
+  --linkedin-white: #ffffff;
+  --linkedin-black: rgba(0, 0, 0, 0.9);
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: var(--linkedin-bg-off-white);
+
+  /* / Fonts */
+
+  --main-font: "Lato", sans-serif;
+}
+
+.left-side-col {
+  max-width: 225px !important;
+  padding: 0 !important;
+}
+
+.profile-cover-mini img {
+  height: 56px;
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+  border-radius: 10px 10px 0 0;
+}
+
+.profile-picture-mini img {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--linkedin-white);
+  top: 1%;
+  transform: translateX(100%);
+}
+
+.left-profile-mini {
+  background-color: var(--linkedin-white);
+  height: 260px;
+  border-radius: 10px 10px 0 0;
+}
+
+.profile-text-mini {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  margin-block-start: 45px;
+  padding-block-end: 25px;
+  border-bottom: 1px solid var(--linkedin-white-grey);
+}
+
+.profile-text-mini2 {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 10px;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  cursor: pointer;
+}
+.profile-text-mini2:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+.secondary-side-nav {
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 15px;
+  border-bottom: 1px solid var(--linkedin-white-grey);
+}

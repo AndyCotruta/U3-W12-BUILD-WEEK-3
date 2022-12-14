@@ -6,16 +6,13 @@ import LeftSidebar from "./LeftSidebar";
 const HomePage = () => {
   return (
     <>
-      <Col sm={12} md={6} lg={2}>
-        <div>
-          <LeftSidebar />
-        </div>
-      </Col>
-      <Col sm={12} md={6} lg={6}>
+      <LeftSidebar />
+
+      <Col>
         <MainPostsContainer />
       </Col>
 
-      <Col sm={12} md={6} lg={4}>
+      <Col>
         <RightSideBar />
       </Col>
     </>

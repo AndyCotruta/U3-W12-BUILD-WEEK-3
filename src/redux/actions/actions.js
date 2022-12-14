@@ -1,14 +1,20 @@
+import { useDispatch } from "react-redux";
+
 export const ADD_ALL_PROFILES = "ADD_ALL_PROFILES";
 export const GET_EXPERIENCE = "GET_EXPERIENCE";
 export const GET_EXPERIENCE_ERROR = "GET_EXPERIENCE_ERROR";
 
 export const fetchProfile = (endPoint, options) => {
-  return async () => {
+  return async (dispatch) => {
     let response = await fetch(endPoint, options);
     try {
       if (response.ok) {
         let data = await response.json();
         console.log(data);
+        dispatch({
+          type: ADD_ALL_PROFILES,
+          payload: data,
+        });
       }
     } catch (error) {
       console.log(error);

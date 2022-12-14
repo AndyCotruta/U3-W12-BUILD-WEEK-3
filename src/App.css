@@ -167,6 +167,10 @@ svg {
 
 /* ....................... Utility classes ........................ */
 
+.pointer {
+  cursor: pointer;
+}
+
 .fw-bold {
   font-weight: bold;
 }

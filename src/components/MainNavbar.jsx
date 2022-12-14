@@ -8,6 +8,7 @@ import message from "../Icon/Message.svg";
 import notification from "../Icon/notification.svg";
 import work from "../Icon/work.svg";
 import { useNavigate } from "react-router-dom";
+import SearchModel from "./SearchModel";
 
 const MainNavbar = () => {
   const navigate = useNavigate();
@@ -18,8 +19,11 @@ const MainNavbar = () => {
           <div className="logo-mini">
             <img src={logomini} alt="" />
           </div>
-          <Form inline>
+          <Form inline className="search-position">
             <FormControl type="text" placeholder="Search" className="mr-sm-2 search-input" />
+            <div className="search-model ">
+              <SearchModel />
+            </div>
           </Form>
         </div>
 

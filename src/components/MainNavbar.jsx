@@ -27,9 +27,9 @@ const MainNavbar = () => {
 
           <Form inline className="search-position">
             <FormControl type="text" placeholder="Search" className="mr-sm-2 search-input" />
-            {/* <div className="search-model ">
+            <div className="search-model ">
               <SearchModel />
-            </div> */}
+            </div>
           </Form>
         </div>
 

@@ -339,6 +339,31 @@ svg {
   display: flex;
   padding: 12px 0;
 }
+.experience-subsection {
+  display: flex;
+  justify-content: space-between;
+}
+.experience-buttons {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  align-items: center;
+  border: none;
+  background-color: white;
+}
+.experience-buttons-icon {
+  height: 25px;
+  width: 25px;
+  color: var(--linkedin-dark-grey);
+  justify-content: center;
+  align-self: center;
+  padding: 0%;
+  margin: auto;
+}
+.experience-buttons:hover {
+  background-color: var(--linkedin-bg-off-white);
+  cursor: pointer;
+}
 
 .experience-logo {
   width: 56px;

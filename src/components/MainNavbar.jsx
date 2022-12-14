@@ -45,17 +45,11 @@ const MainNavbar = () => {
         profile.name.toLowerCase().includes(query) ||
         profile.surname.toLowerCase().includes(query)
     );
-
-    console.log(filteredResults.slice(0, 5));
     dispatch({
       type: ADD_SEARCH_RESULTS,
       payload: filteredResults,
     });
   };
-
-  useEffect(() => {
-    console.log(query);
-  }, [query]);
 
   return (
     <Navbar expand="lg" className="navbar-main">

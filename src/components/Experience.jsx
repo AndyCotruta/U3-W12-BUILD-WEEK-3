@@ -1,11 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getExperienceAction } from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { HiOutlinePlus } from "react-icons/hi";
 import { HiOutlinePencil } from "react-icons/hi";
+import ExperienceModal from "./ExperienceModal";
 
 const Experience = () => {
   const experiences = useSelector((state) => state.experience.expData);
+  const [modalShow, setModalShow] = useState(false);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,9 +25,16 @@ const Experience = () => {
           <button className="experience-buttons">
             <HiOutlinePlus className="experience-buttons-icon" />
           </button>
-          <button className="experience-buttons">
+          <button
+            className="experience-buttons"
+            onClick={() => setModalShow(true)}
+          >
             <HiOutlinePencil className="experience-buttons-icon" />
           </button>
+          <ExperienceModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
         </div>
         {/* end here */}
       </div>

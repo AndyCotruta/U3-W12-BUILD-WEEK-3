@@ -364,7 +364,11 @@ svg {
   background-color: var(--linkedin-bg-off-white);
   cursor: pointer;
 }
-
+.experience-modal {
+  height: 80vh;
+  border-radius: 20%;
+  position: fixed;
+}
 .experience-logo {
   width: 56px;
   height: 48px;

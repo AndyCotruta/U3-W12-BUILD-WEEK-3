@@ -1,8 +1,14 @@
-import { CHANGE_CLICKED_SEARCH_STATUS } from "../actions/actions";
+import { Accordion } from "react-bootstrap";
+import {
+  ADD_QUERY,
+  ADD_SEARCH_RESULTS,
+  CHANGE_CLICKED_SEARCH_STATUS,
+} from "../actions/actions";
 
 const initialState = {
   clicked: false,
   query: "",
+  searchResults: [],
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -11,6 +17,20 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         clicked: action.payload,
+      };
+    }
+
+    case ADD_QUERY: {
+      return {
+        ...state,
+        query: action.payload,
+      };
+    }
+
+    case ADD_SEARCH_RESULTS: {
+      return {
+        ...state,
+        searchResults: action.payload,
       };
     }
 

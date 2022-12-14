@@ -17,14 +17,45 @@ import notification from "../Icon/notification.svg";
 import work from "../Icon/work.svg";
 import { useNavigate } from "react-router-dom";
 import SearchModel from "./SearchModel";
-import { CHANGE_CLICKED_SEARCH_STATUS } from "../redux/actions/actions";
+import {
+  ADD_QUERY,
+  ADD_SEARCH_RESULTS,
+  CHANGE_CLICKED_SEARCH_STATUS,
+} from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 const MainNavbar = () => {
   const clickedSearch = useSelector((state) => state.search.clicked);
+  const allProfiles = useSelector((state) => state.profiles.allProfiles);
+  const searchResults = useSelector((state) => state.search.searchResults);
+  const [query, setQuery] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const filterProfiles = (e) => {
+    dispatch({
+      type: ADD_QUERY,
+      payload: e,
+    });
+
+    const filteredResults = allProfiles.filter(
+      (profile) =>
+        profile.name.toLowerCase().includes(query) ||
+        profile.surname.toLowerCase().includes(query)
+    );
+
+    console.log(filteredResults.slice(0, 5));
+    dispatch({
+      type: ADD_SEARCH_RESULTS,
+      payload: filteredResults,
+    });
+  };
+
+  useEffect(() => {
+    console.log(query);
+  }, [query]);
 
   return (
     <Navbar expand="lg" className="navbar-main">
@@ -51,10 +82,16 @@ const MainNavbar = () => {
                   payload: !clickedSearch,
                 });
               }}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                filterProfiles(e.target.value);
+              }}
             />
             {clickedSearch && (
               <div className="search-model ">
-                <SearchModel />
+                {searchResults.slice(0, 5).map((result) => (
+                  <SearchModel resultData={result} key={result._id} />
+                ))}
               </div>
             )}
           </Form>

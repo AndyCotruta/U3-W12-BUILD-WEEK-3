@@ -7,6 +7,8 @@ export const GET_EXPERIENCE = "GET_EXPERIENCE";
 export const GET_EXPERIENCE_ERROR = "GET_EXPERIENCE_ERROR";
 
 export const CHANGE_CLICKED_SEARCH_STATUS = "CHANGE_CLICKED_SEARCH_STATUS";
+export const ADD_SEARCH_RESULTS = "ADD_SEARCH_RESULTS";
+export const ADD_QUERY = "ADD_QUERY";
 
 const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
 const accessToken =

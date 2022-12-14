@@ -1,20 +1,9 @@
+import { useDispatch } from "react-redux";
+
 export const ADD_ALL_PROFILES = "ADD_ALL_PROFILES";
+export const ADD_CLICKED_PROFILE = "ADD_CLICKED_PROFILE";
 export const GET_EXPERIENCE = "GET_EXPERIENCE";
 export const GET_EXPERIENCE_ERROR = "GET_EXPERIENCE_ERROR";
-
-export const fetchProfile = (endPoint, options) => {
-  return async () => {
-    let response = await fetch(endPoint, options);
-    try {
-      if (response.ok) {
-        let data = await response.json();
-        console.log(data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
 
 const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
 const accessToken =
@@ -24,6 +13,25 @@ const options = {
   headers: {
     Authorization: "Bearer " + accessToken,
   },
+};
+
+export const fetchProfile = (endPoint, options, id, action) => {
+  console.log(`Fetching.... for id: ${id} and doing ${action} at ${endPoint}`);
+  return async (dispatch) => {
+    let response = await fetch(endPoint + id, options);
+    try {
+      if (response.ok) {
+        let data = await response.json();
+        console.log(data);
+        dispatch({
+          type: action,
+          payload: data,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 };
 
 export const getExperienceAction = () => {

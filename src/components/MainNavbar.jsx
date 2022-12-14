@@ -17,9 +17,15 @@ import notification from "../Icon/notification.svg";
 import work from "../Icon/work.svg";
 import { useNavigate } from "react-router-dom";
 import SearchModel from "./SearchModel";
+import { CHANGE_CLICKED_SEARCH_STATUS } from "../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const MainNavbar = () => {
+  const clickedSearch = useSelector((state) => state.search.clicked);
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   return (
     <Navbar expand="lg" className="navbar-main">
       <Container className="d-flex justify-content-between">
@@ -34,10 +40,23 @@ const MainNavbar = () => {
           </div>
 
           <Form inline className="search-position">
-            <FormControl type="text" placeholder="Search" className="mr-sm-2 search-input" />
-            <div className="search-model ">
-              <SearchModel />
-            </div>
+            <FormControl
+              type="text"
+              placeholder="Search"
+              className="mr-sm-2 search-input"
+              onClick={() => {
+                console.log("Search was clicked");
+                dispatch({
+                  type: CHANGE_CLICKED_SEARCH_STATUS,
+                  payload: !clickedSearch,
+                });
+              }}
+            />
+            {clickedSearch && (
+              <div className="search-model ">
+                <SearchModel />
+              </div>
+            )}
           </Form>
         </div>
 

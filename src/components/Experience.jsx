@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  fetchProfile,
-  getExperienceAction,
-  GET_EXPERIENCE,
-} from "../redux/actions/actions";
+import { fetchProfile, GET_EXPERIENCE } from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { HiOutlinePlus } from "react-icons/hi";
 import { HiOutlinePencil } from "react-icons/hi";

@@ -5,9 +5,9 @@ const MainPostsContainer = () => {
   return (
     <>
       <WritePost />
-      <div>
-        <hr></hr>
-        <span>Sort by: Top</span>
+      <div className="d-flex align-items-center justify-content-space-between">
+        <hr className="w-75"></hr>
+        <span className="mx-2">Sort by: Top</span>
       </div>
       <PostsDisplay />
     </>

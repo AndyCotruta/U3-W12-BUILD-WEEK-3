@@ -3,22 +3,24 @@ import { Row, Col } from "react-bootstrap";
 const PostsDisplay = () => {
   return (
     <>
-      <div className="mainContainerPost mt-2 p-2">
+      <div className="mainContainerPost">
         <Row>
-          <Col className="d-flex">
-            <div>
-              <p className="font-weight-bold text-smaller p-0 m-0">
-                profile name{" "}
-              </p>
-              <p className="text-smaller"> post title</p>
-            </div>
-          </Col>
-        </Row>
-        <Row>
+          <div className=" mt-2 p-1">
+            <img
+              className="userPicturePost mt-2 ml-3"
+              src="https://picsum.photos/200/"
+              alt="profile.name"
+            />{" "}
+          </div>
+          <div>
+            <div>profile.name profile.surname</div>
+            <div>profile.title</div>
+          </div>
           <Col xs={12}>
-            <p>post text</p>
+            <div>post text</div>
           </Col>
         </Row>
+
         <Row>
           <Col xs={12}>
             <img
@@ -26,6 +28,11 @@ const PostsDisplay = () => {
               alt="random-pic"
               className="w-100"
             />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <div>post text</div>
           </Col>
         </Row>
       </div>

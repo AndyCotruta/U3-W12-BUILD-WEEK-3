@@ -44,15 +44,8 @@ const ExperienceModal = (props) => {
     },
     body: JSON.stringify(addedData),
   };
-  const options2 = {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer " + accessToken,
-    },
-  };
   const id = `${props.currentProfile._id}/experiences`;
   const action = ADD_EXPERIENCE;
-  const action2 = GET_EXPERIENCE;
   const dispatch = useDispatch();
 
   return (
@@ -184,7 +177,6 @@ const ExperienceModal = (props) => {
               payload: false,
             });
             dispatch(fetchProfile(endPoint, options, id, action));
-            dispatch(fetchProfile(endPoint, options2, id, action2));
           }}
         >
           Save

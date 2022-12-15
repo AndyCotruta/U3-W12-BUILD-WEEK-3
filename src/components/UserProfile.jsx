@@ -42,6 +42,10 @@ const UserProfile = () => {
     dispatch(fetchProfile(endPoint, options, id, action));
   }, [clickedProfile]);
 
+  useEffect(() => {
+    dispatch(fetchProfile(endPoint, options, id, action));
+  }, [addedExpData]);
+
   return (
     <>
       <Col sm={12} md={6} lg={8}>

@@ -14,8 +14,9 @@ const Experience = (props) => {
   const dispatch = useDispatch();
   // const experiences = useSelector((state) => state.experience.expData);
   const experiences = props.experiences;
-  const [modalShow, setModalShow] = useState(false);
   const showModal = useSelector((state) => state.experience.showModal);
+  const myProfile = useSelector((state) => state.profiles.myProfile);
+  const clickedProfile = useSelector((state) => state.profiles.clickedProfile);
   // const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
   // const accessToken =
   //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
@@ -44,18 +45,22 @@ const Experience = (props) => {
         <h3 className="activity-title fs-20 fw-700 d-block">Experience</h3>
         {/* this gets displayed when on user page */}
         <div>
-          {" "}
-          <button
-            className="experience-buttons"
-            onClick={() => {
-              dispatch({ type: CHANGE_SHOW_MODAL, payload: true });
-            }}
-          >
-            <HiOutlinePlus className="experience-buttons-icon" />
-          </button>
-          <button className="experience-buttons">
-            <HiOutlinePencil className="experience-buttons-icon" />
-          </button>
+          {myProfile._id === clickedProfile._id && (
+            <>
+              <button
+                className="experience-buttons"
+                onClick={() => {
+                  dispatch({ type: CHANGE_SHOW_MODAL, payload: true });
+                }}
+              >
+                <HiOutlinePlus className="experience-buttons-icon" />
+              </button>
+              <button className="experience-buttons">
+                <HiOutlinePencil className="experience-buttons-icon" />
+              </button>
+            </>
+          )}
+
           <ExperienceModal
             currentProfile={props.currentProfile}
             show={showModal}

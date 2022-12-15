@@ -1,0 +1,24 @@
+.mainContainerPost {
+  background-color: var(--linkedin-white);
+  border-radius: 10px;
+}
+.userPicturePost {
+  width: "50px";
+  height: "50px";
+  object-fit: "cover";
+  border-radius: 50%;
+}
+.userPostBtn {
+  margin-top: 10px;
+  border: 1px solid var(--linkedin-white-grey);
+  background-color: var(--linkedin-white);
+  height: 45px;
+  width: 450px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: var(--linkedin-dark-grey);
+}
+.userPostIcons {
+  justify-content: space-between;
+  align-items: center;
+}

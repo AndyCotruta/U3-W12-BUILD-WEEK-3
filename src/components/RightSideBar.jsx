@@ -40,11 +40,20 @@ const RightSideBar = () => {
   );
 
   const dispatch = useDispatch();
-
+  const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + accessToken,
+    },
+  };
+  const id = "";
   const action = ADD_ALL_PROFILES;
 
   useEffect(() => {
-    dispatch(fetchProfile(action));
+    dispatch(fetchProfile(endPoint, options, id, action));
   }, []);
 
   const allProfiles = useSelector((state) => state.profiles.allProfiles);

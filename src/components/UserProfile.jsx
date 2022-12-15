@@ -19,7 +19,8 @@ const UserProfile = () => {
   const clickedProfile = useSelector((state) => state.profiles.clickedProfile);
 
   if (myProfile) {
-    const currentProfile = params.userId === myProfile._id ? myProfile : clickedProfile;
+    const currentProfile =
+      params.userId === myProfile._id ? myProfile : clickedProfile;
 
     return (
       <>

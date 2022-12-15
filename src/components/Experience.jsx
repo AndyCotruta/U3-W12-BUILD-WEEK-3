@@ -7,7 +7,8 @@ import {
 } from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { HiOutlinePlus } from "react-icons/hi";
-import { HiOutlinePencil } from "react-icons/hi";
+import { HiOutlinePencil, HiTrash } from "react-icons/hi";
+import { IoMdArrowBack } from "react-icons/io";
 import ExperienceModal from "./ExperienceModal";
 import { useParams } from "react-router-dom";
 
@@ -47,7 +48,24 @@ const Experience = (props) => {
   return (
     <div className="experience-section ">
       <div className="d-flex experience-subsection">
-        <h3 className="activity-title fs-20 fw-700 d-block">Experience</h3>
+        <h3 className="activity-title fs-20 fw-700 d-block d-flex align-items-center">
+          {editExpSection && (
+            <span>
+              <button className="experience-buttons">
+                <IoMdArrowBack
+                  className="experience-buttons-icon"
+                  onClick={() => {
+                    dispatch({
+                      type: CHANGE_EDIT_EXP_SECTION,
+                      payload: !editExpSection,
+                    });
+                  }}
+                />
+              </button>
+            </span>
+          )}
+          Experience
+        </h3>
         {/* this gets displayed when on user page */}
         <div>
           {myProfile._id === clickedProfile._id && (
@@ -60,17 +78,19 @@ const Experience = (props) => {
               >
                 <HiOutlinePlus className="experience-buttons-icon" />
               </button>
-              <button className="experience-buttons">
-                <HiOutlinePencil
-                  className="experience-buttons-icon"
-                  onClick={() => {
-                    dispatch({
-                      type: CHANGE_EDIT_EXP_SECTION,
-                      payload: !editExpSection,
-                    });
-                  }}
-                />
-              </button>
+              {!editExpSection && (
+                <button className="experience-buttons">
+                  <HiOutlinePencil
+                    className="experience-buttons-icon"
+                    onClick={() => {
+                      dispatch({
+                        type: CHANGE_EDIT_EXP_SECTION,
+                        payload: !editExpSection,
+                      });
+                    }}
+                  />
+                </button>
+              )}
             </>
           )}
 
@@ -85,7 +105,10 @@ const Experience = (props) => {
         {/* end here */}
       </div>
       {experiences.map((experience) => (
-        <div className="experience-content" key={experience._id}>
+        <div
+          className="experience-content d-flex justify-content-between"
+          key={experience._id}
+        >
           {/* <div className="experience-logo">
             <img
               src="https://media-exp1.licdn.com/dms/image/C4D0BAQEFWO_s8a0FHQ/company-logo_200_200/0/1647618816994?e=1678924800&v=beta&t=odzOEdC0guAqvuVCim8HVjfOOqC4KwNoQmSMZQ69EPg"
@@ -103,7 +126,22 @@ const Experience = (props) => {
               {experience.updatedAt.slice(0, 10)}
             </span> */}
             <p className="fs-14 ld-grey">{experience.area}</p>
-          </div>
+          </div>{" "}
+          {editExpSection && (
+            <div>
+              <button className="experience-buttons">
+                <HiTrash className="experience-buttons-icon" />
+              </button>
+              <button className="experience-buttons">
+                <HiOutlinePencil
+                  className="experience-buttons-icon"
+                  onClick={() => {
+                    dispatch({ type: CHANGE_SHOW_MODAL, payload: true });
+                  }}
+                />
+              </button>
+            </div>
+          )}
         </div>
       ))}
     </div>

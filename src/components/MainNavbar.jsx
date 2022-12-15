@@ -18,6 +18,7 @@ import work from "../Icon/work.svg";
 import { useNavigate } from "react-router-dom";
 import SearchModel from "./SearchModel";
 import {
+  ADD_CLICKED_PROFILE,
   ADD_QUERY,
   ADD_SEARCH_RESULTS,
   CHANGE_CLICKED_SEARCH_STATUS,
@@ -152,6 +153,10 @@ const MainNavbar = () => {
                     className="dropdown-main-action d-flex align-items-center"
                     onClick={() => {
                       navigate(`/profile/${myProfile._id}`);
+                      dispatch({
+                        type: ADD_CLICKED_PROFILE,
+                        payload: myProfile,
+                      });
                     }}
                   >
                     <span>
@@ -176,6 +181,10 @@ const MainNavbar = () => {
                       className="btn nav-view-profile-btn fs-14"
                       onClick={() => {
                         navigate(`/profile/${myProfile._id}`);
+                        dispatch({
+                          type: ADD_CLICKED_PROFILE,
+                          payload: myProfile,
+                        });
                       }}
                     >
                       View Profile

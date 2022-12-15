@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { Modal, Button, Form, Row, Col, FormControl } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { fetchProfile, GET_EXPERIENCE } from "../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  ADD_EXPERIENCE,
+  CHANGE_SHOW_MODAL,
+  fetchProfile,
+  GET_EXPERIENCE,
+} from "../redux/actions/actions";
 
 const ExperienceModal = (props) => {
   // const addedData = {
@@ -10,7 +15,7 @@ const ExperienceModal = (props) => {
   //   startDate: "2019-06-16",
   //   endDate: "2019-06-16",
   // };
-
+  const showModal = useSelector((state) => state.experience.showModal);
   const [addedData, setAddedData] = useState({
     role: "",
     company: "",
@@ -39,8 +44,15 @@ const ExperienceModal = (props) => {
     },
     body: JSON.stringify(addedData),
   };
+  const options2 = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + accessToken,
+    },
+  };
   const id = `${props.currentProfile._id}/experiences`;
-  const action = GET_EXPERIENCE;
+  const action = ADD_EXPERIENCE;
+  const action2 = GET_EXPERIENCE;
   const dispatch = useDispatch();
 
   return (
@@ -167,7 +179,12 @@ const ExperienceModal = (props) => {
       <Modal.Footer>
         <Button
           onClick={() => {
+            dispatch({
+              type: CHANGE_SHOW_MODAL,
+              payload: false,
+            });
             dispatch(fetchProfile(endPoint, options, id, action));
+            dispatch(fetchProfile(endPoint, options2, id, action2));
           }}
         >
           Save

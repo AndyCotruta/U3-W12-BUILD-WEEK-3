@@ -20,6 +20,7 @@ const UserProfile = () => {
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const clickedProfile = useSelector((state) => state.profiles.clickedProfile);
   const experiences = useSelector((state) => state.experience.expData);
+  const addedExpData = useSelector((state) => state.experience.addedExpData);
 
   const currentProfile =
     params.userId === myProfile._id ? myProfile : clickedProfile;
@@ -39,11 +40,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     dispatch(fetchProfile(endPoint, options, id, action));
-  }, [currentProfile]);
-
-  useEffect(() => {
-    console.log(currentProfile);
-  }, [currentProfile]);
+  }, [clickedProfile]);
 
   return (
     <>

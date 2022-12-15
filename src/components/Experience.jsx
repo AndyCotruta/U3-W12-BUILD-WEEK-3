@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { fetchProfile, GET_EXPERIENCE } from "../redux/actions/actions";
+import {
+  CHANGE_SHOW_MODAL,
+  fetchProfile,
+  GET_EXPERIENCE,
+} from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { HiOutlinePlus } from "react-icons/hi";
 import { HiOutlinePencil } from "react-icons/hi";
@@ -7,9 +11,11 @@ import ExperienceModal from "./ExperienceModal";
 import { useParams } from "react-router-dom";
 
 const Experience = (props) => {
+  const dispatch = useDispatch();
   // const experiences = useSelector((state) => state.experience.expData);
   const experiences = props.experiences;
   const [modalShow, setModalShow] = useState(false);
+  const showModal = useSelector((state) => state.experience.showModal);
   // const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
   // const accessToken =
   //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
@@ -41,7 +47,9 @@ const Experience = (props) => {
           {" "}
           <button
             className="experience-buttons"
-            onClick={() => setModalShow(true)}
+            onClick={() => {
+              dispatch({ type: CHANGE_SHOW_MODAL, payload: true });
+            }}
           >
             <HiOutlinePlus className="experience-buttons-icon" />
           </button>
@@ -50,14 +58,16 @@ const Experience = (props) => {
           </button>
           <ExperienceModal
             currentProfile={props.currentProfile}
-            show={modalShow}
-            onHide={() => setModalShow(false)}
+            show={showModal}
+            onHide={() => {
+              dispatch({ type: CHANGE_SHOW_MODAL, payload: false });
+            }}
           />
         </div>
         {/* end here */}
       </div>
       {experiences.map((experience) => (
-        <div className="experience-content">
+        <div className="experience-content" key={experience._id}>
           {/* <div className="experience-logo">
             <img
               src="https://media-exp1.licdn.com/dms/image/C4D0BAQEFWO_s8a0FHQ/company-logo_200_200/0/1647618816994?e=1678924800&v=beta&t=odzOEdC0guAqvuVCim8HVjfOOqC4KwNoQmSMZQ69EPg"

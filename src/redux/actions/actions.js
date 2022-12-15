@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 
 export const ADD_ALL_PROFILES = "ADD_ALL_PROFILES";
 export const ADD_CLICKED_PROFILE = "ADD_CLICKED_PROFILE";
+export const ADD_MY_PROFILE = "ADD_MY_PROFILE";
 
 export const GET_EXPERIENCE = "GET_EXPERIENCE";
 export const GET_EXPERIENCE_ERROR = "GET_EXPERIENCE_ERROR";
@@ -21,7 +22,6 @@ const options = {
 };
 
 export const fetchProfile = (endPoint, options, id, action) => {
-  console.log(`Fetching.... for id: ${id} and doing ${action} at ${endPoint}`);
   return async (dispatch) => {
     let response = await fetch(endPoint + id, options);
     try {

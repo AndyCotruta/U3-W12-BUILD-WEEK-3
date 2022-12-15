@@ -3,14 +3,16 @@ import { BsPlayBtnFill } from "react-icons/bs";
 import { BsCalendar2Date } from "react-icons/bs";
 import { BiNews } from "react-icons/bi";
 import "./HomePage.css";
+import { useSelector } from "react-redux";
 
 const WritePost = () => {
+  const myProfile = useSelector((state) => state.profiles.myProfile);
   return (
     <div className="mainContainerPost">
       <div className="d-flex">
         <img
-          className="userPicturePost m-2, p-2"
-          src="https://picsum.photos/50"
+          className="userPicturePost m-2, p-2 xs-profiles"
+          src={myProfile.image}
           alt="userImg"
         />{" "}
         <button className="userPostBtn m-2, p-2">Start a post</button>

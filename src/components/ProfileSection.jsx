@@ -1,10 +1,10 @@
 import message from "../Icon/Send.svg";
 import plus from "../Icon/Plus.svg";
 import { useSelector } from "react-redux";
+import { useLocation, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
-const ProfileSection = () => {
-  const currentProfile = useSelector((state) => state.profiles.clickedProfile);
-
+const ProfileSection = (props) => {
   return (
     <div className="profile-main">
       <div className="profile-cover">
@@ -13,17 +13,17 @@ const ProfileSection = () => {
           alt=""
         />
         <div className="profile-picture">
-          <img src={currentProfile.image} alt="profile-image" />
+          <img src={props.currentProfile.image} alt="profile-image" />
         </div>
       </div>
       <div className="profile-text-area">
         <div className="profile-text">
           <p className="username fs-24 fw-700 margin-0">
-            {currentProfile.name} {currentProfile.surname}
+            {props.currentProfile.name} {props.currentProfile.surname}
           </p>
-          <p className="user-role fs-16">{currentProfile.title}</p>
+          <p className="user-role fs-16">{props.currentProfile.title}</p>
           <div className="contact-location d-flex align-items-center">
-            <p className="location fs-14  mr-2">{currentProfile.area}</p>
+            <p className="location fs-14  mr-2">{props.currentProfile.area}</p>
             <p className="contact-info fs-14 fw-700">Contact info</p>
           </div>
         </div>

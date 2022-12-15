@@ -5,7 +5,7 @@ import { HiOutlinePlus } from "react-icons/hi";
 import { HiOutlinePencil } from "react-icons/hi";
 import ExperienceModal from "./ExperienceModal";
 
-const Experience = () => {
+const Experience = (props) => {
   const experiences = useSelector((state) => state.experience.expData);
   const [modalShow, setModalShow] = useState(false);
 

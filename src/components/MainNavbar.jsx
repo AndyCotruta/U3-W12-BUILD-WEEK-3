@@ -1,4 +1,12 @@
-import { Navbar, Nav, NavDropdown, FormControl, Form, Button, Container } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  FormControl,
+  Form,
+  Button,
+  Container,
+} from "react-bootstrap";
 import "./MainNavbar.css";
 import logomini from "../Icon/Logo-nav.svg";
 import home from "../Icon/Home.svg";
@@ -21,6 +29,7 @@ const MainNavbar = () => {
   const clickedSearch = useSelector((state) => state.search.clicked);
   const allProfiles = useSelector((state) => state.profiles.allProfiles);
   const searchResults = useSelector((state) => state.search.searchResults);
+  const myProfile = useSelector((state) => state.profiles.myProfile);
   const [query, setQuery] = useState("");
 
   const navigate = useNavigate();
@@ -131,51 +140,93 @@ const MainNavbar = () => {
               </div>
             </Nav.Link>
             <div className="profile-drop-down menu-size">
-              <img src="https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg" alt="" className="profile-icon" />
-              <NavDropdown title="Me" id="basic-nav-dropdown" className="profile-name">
-                <NavDropdown.Item href="#action/3.1" className="dropdown-main-action d-flex align-items-center">
+              <img src={myProfile.image} alt="" className="profile-icon" />
+              <NavDropdown
+                title="Me"
+                id="basic-nav-dropdown"
+                className="profile-name"
+              >
+                <NavDropdown.Item
+                  className="dropdown-main-action d-flex align-items-center"
+                  onClick={() => {
+                    navigate(`/profile/${myProfile._id}`);
+                  }}
+                >
                   <span>
-                    <img src="https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg" alt="" className="profile-icon2 mr-2" />
+                    <img
+                      src={myProfile.image}
+                      alt=""
+                      className="profile-icon2 mr-2"
+                    />
                   </span>
                   <div style={{ color: "black" }}>
-                    <p className="fs-16 fw-700">User Name</p>
-                    <p className="fs-14 ">IT Specialist</p>
+                    <p className="fs-16 fw-700">
+                      {myProfile.name} {myProfile.surname}
+                    </p>
+                    <p className="fs-14 ">{myProfile.title}</p>
                   </div>
                 </NavDropdown.Item>
-                <div href="#action/3.1.2" className="dropdown-secondary-action d-flex justify-content-center mt-2 mb-2">
+                <div
+                  href="#action/3.1.2"
+                  className="dropdown-secondary-action d-flex justify-content-center mt-2 mb-2"
+                >
                   <Button
                     className="btn nav-view-profile-btn fs-14"
                     onClick={() => {
-                      navigate("/profile/1234");
+                      navigate(`/profile/${myProfile._id}`);
                     }}
                   >
                     View Profile
                   </Button>
                 </div>
                 <NavDropdown.Divider />
-                <div href="#action/3.2" className="dropdown-main-action fs-16 fw-800 ml-4">
+                <div
+                  href="#action/3.2"
+                  className="dropdown-main-action fs-16 fw-800 ml-4"
+                >
                   Account
                 </div>
-                <NavDropdown.Item href="#action/3.2.1" className="dropdown-secondary-action fs-14">
+                <NavDropdown.Item
+                  href="#action/3.2.1"
+                  className="dropdown-secondary-action fs-14"
+                >
                   Try premium for free
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2.2" className="dropdown-secondary-action fs-14">
+                <NavDropdown.Item
+                  href="#action/3.2.2"
+                  className="dropdown-secondary-action fs-14"
+                >
                   Settings & Privacy
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2.3" className="dropdown-secondary-action fs-14">
+                <NavDropdown.Item
+                  href="#action/3.2.3"
+                  className="dropdown-secondary-action fs-14"
+                >
                   Help
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2.4" className="dropdown-secondary-action fs-14">
+                <NavDropdown.Item
+                  href="#action/3.2.4"
+                  className="dropdown-secondary-action fs-14"
+                >
                   Language
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <div href="#action/3.3" className="dropdown-main-action fs-16 fw-800 ml-4">
+                <div
+                  href="#action/3.3"
+                  className="dropdown-main-action fs-16 fw-800 ml-4"
+                >
                   Manage
                 </div>
-                <NavDropdown.Item href="#action/3.3.1" className="dropdown-secondary-action fs-14">
+                <NavDropdown.Item
+                  href="#action/3.3.1"
+                  className="dropdown-secondary-action fs-14"
+                >
                   Posts & Activity
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3.2" className="dropdown-secondary-action fs-14">
+                <NavDropdown.Item
+                  href="#action/3.3.2"
+                  className="dropdown-secondary-action fs-14"
+                >
                   Job Posting Account
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
@@ -184,7 +235,11 @@ const MainNavbar = () => {
             </div>
             <div className="profile-drop-down menu-size work">
               <img src={work} alt="" className="nav-menu-icon" />
-              <NavDropdown title="Work" id="basic-nav-dropdown" className="profile-name "></NavDropdown>
+              <NavDropdown
+                title="Work"
+                id="basic-nav-dropdown"
+                className="profile-name "
+              ></NavDropdown>
             </div>
             <Nav.Link href="#premium" className="text-align-center ">
               <p className="fs-14 fw-700 premium">Try premium for free!</p>

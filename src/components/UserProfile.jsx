@@ -21,6 +21,9 @@ const UserProfile = () => {
   const clickedProfile = useSelector((state) => state.profiles.clickedProfile);
   const experiences = useSelector((state) => state.experience.expData);
   const addedExpData = useSelector((state) => state.experience.addedExpData);
+  const editExpSection = useSelector(
+    (state) => state.experience.showEditExpSection
+  );
 
   const currentProfile =
     params.userId === myProfile._id ? myProfile : clickedProfile;
@@ -48,39 +51,61 @@ const UserProfile = () => {
 
   return (
     <>
-      <Col sm={12} md={6} lg={8}>
-        <ProfileSection currentProfile={currentProfile} />
-        <div className="cards-main-container cd-width">
-          <AboutUser currentProfile={currentProfile} />
-          <div className="activity">
-            <Activity />
-          </div>
-          <div className="experience cd cd-width ff">
-            <Experience
-              currentProfile={currentProfile}
-              experiences={experiences}
-            />
-          </div>
-          <div className="education cd cd-width ff">
-            <Education />
-          </div>
-          <div className="Licenses cd cd-width ff">
-            <Licenses />
-          </div>
-          <div className="skills cd cd-width ff">
-            <Skills />
-          </div>
-          <div className="languages cd cd-width ff">
-            <Languages />
-          </div>
-          <div className="interests cd cd-width ff">
-            <Interests />
-          </div>
-        </div>
-      </Col>
-      <Col sm={12} md={6} lg={4}>
-        <RightSideBar />
-      </Col>
+      {editExpSection ? (
+        <>
+          {" "}
+          <Col sm={12} md={6} lg={8}>
+            <ProfileSection currentProfile={currentProfile} />
+            <div className="cards-main-container cd-width">
+              <div className="experience cd cd-width ff">
+                <Experience
+                  currentProfile={currentProfile}
+                  experiences={experiences}
+                />
+              </div>
+            </div>{" "}
+          </Col>
+          <Col sm={12} md={6} lg={4}>
+            <RightSideBar />
+          </Col>
+        </>
+      ) : (
+        <>
+          <Col sm={12} md={6} lg={8}>
+            <ProfileSection currentProfile={currentProfile} />
+            <div className="cards-main-container cd-width">
+              <AboutUser currentProfile={currentProfile} />
+              <div className="activity">
+                <Activity />
+              </div>
+              <div className="experience cd cd-width ff">
+                <Experience
+                  currentProfile={currentProfile}
+                  experiences={experiences}
+                />
+              </div>
+              <div className="education cd cd-width ff">
+                <Education />
+              </div>
+              <div className="Licenses cd cd-width ff">
+                <Licenses />
+              </div>
+              <div className="skills cd cd-width ff">
+                <Skills />
+              </div>
+              <div className="languages cd cd-width ff">
+                <Languages />
+              </div>
+              <div className="interests cd cd-width ff">
+                <Interests />
+              </div>
+            </div>
+          </Col>
+          <Col sm={12} md={6} lg={4}>
+            <RightSideBar />
+          </Col>
+        </>
+      )}
     </>
   );
 };

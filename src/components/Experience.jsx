@@ -49,6 +49,7 @@ const Experience = (props) => {
             <HiOutlinePencil className="experience-buttons-icon" />
           </button>
           <ExperienceModal
+            currentProfile={props.currentProfile}
             show={modalShow}
             onHide={() => setModalShow(false)}
           />

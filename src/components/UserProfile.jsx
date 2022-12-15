@@ -38,10 +38,6 @@ const UserProfile = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({
-      type: action,
-      payload: [],
-    });
     dispatch(fetchProfile(endPoint, options, id, action));
   }, [currentProfile]);
 

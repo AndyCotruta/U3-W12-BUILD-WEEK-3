@@ -1,19 +1,36 @@
 import { useEffect, useState } from "react";
-import { getExperienceAction } from "../redux/actions/actions";
+import { fetchProfile, GET_EXPERIENCE } from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { HiOutlinePlus } from "react-icons/hi";
 import { HiOutlinePencil } from "react-icons/hi";
 import ExperienceModal from "./ExperienceModal";
+import { useParams } from "react-router-dom";
 
-const Experience = () => {
-  const experiences = useSelector((state) => state.experience.expData);
+const Experience = (props) => {
+  // const experiences = useSelector((state) => state.experience.expData);
+  const experiences = props.experiences;
   const [modalShow, setModalShow] = useState(false);
+  // const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
+  // const accessToken =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
+  // const options = {
+  //   method: "GET",
+  //   headers: {
+  //     Authorization: "Bearer " + accessToken,
+  //   },
+  // };
+  // const params = useParams();
+  // const id = params.userId === `${props.currentProfile._id}/experiences`;
+  // const action = GET_EXPERIENCE;
+  // const dispatch = useDispatch();
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getExperienceAction());
-  }, []);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: action,
+  //     payload: [],
+  //   });
+  //   dispatch(fetchProfile(endPoint, options, id, action));
+  // }, [props.currentProfile]);
 
   return (
     <div className="experience-section ">
@@ -22,16 +39,17 @@ const Experience = () => {
         {/* this gets displayed when on user page */}
         <div>
           {" "}
-          <button className="experience-buttons">
-            <HiOutlinePlus className="experience-buttons-icon" />
-          </button>
           <button
             className="experience-buttons"
             onClick={() => setModalShow(true)}
           >
+            <HiOutlinePlus className="experience-buttons-icon" />
+          </button>
+          <button className="experience-buttons">
             <HiOutlinePencil className="experience-buttons-icon" />
           </button>
           <ExperienceModal
+            currentProfile={props.currentProfile}
             show={modalShow}
             onHide={() => setModalShow(false)}
           />

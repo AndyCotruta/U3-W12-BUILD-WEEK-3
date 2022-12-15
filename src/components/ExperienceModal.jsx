@@ -1,6 +1,48 @@
-import { Modal, Button, Form, Row, Col } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Modal, Button, Form, Row, Col, FormControl } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { fetchProfile, GET_EXPERIENCE } from "../redux/actions/actions";
 
 const ExperienceModal = (props) => {
+  // const addedData = {
+  //   role: "CTO",
+  //   company: "Strive School",
+  //   startDate: "2019-06-16",
+  //   endDate: "2019-06-16",
+  // };
+
+  const [addedData, setAddedData] = useState({
+    role: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    area: "",
+  });
+  //this is for edit :)
+  // useEffect(() => {
+  //   setAddedData(props.expData);
+  // }, [props.expData]);
+
+  function handleChange(event) {
+    setAddedData({ ...addedData, [event.target.name]: event.target.value });
+  }
+
+  const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
+  const options = {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + accessToken,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(addedData),
+  };
+  const id = `${props.currentProfile._id}/experiences`;
+  const action = GET_EXPERIENCE;
+  const dispatch = useDispatch();
+
   return (
     <Modal
       {...props}
@@ -10,15 +52,26 @@ const ExperienceModal = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className="mx-3">
-          Edit Experience
+          Add Experience
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <p className="mx-3">* indicates required</p>
-        <Form className="mx-3">
+        <Form
+          className="mx-3"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label>Title*</Form.Label>
-            <Form.Control type="text" placeholder="" />
+            <Form.Label>Role*</Form.Label>
+            <Form.Control
+              value={addedData.role}
+              onChange={handleChange}
+              name="role"
+              type="text"
+              placeholder=""
+            />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label>Employment type</Form.Label>
@@ -44,11 +97,23 @@ const ExperienceModal = (props) => {
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Company name*</Form.Label>
-            <Form.Control type="text" placeholder="" />
+            <Form.Control
+              value={addedData.company}
+              name="company"
+              onChange={handleChange}
+              type="text"
+              placeholder=""
+            />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Location</Form.Label>
-            <Form.Control type="text" placeholder="" />
+            <Form.Label>Location*</Form.Label>
+            <Form.Control
+              value={addedData.area}
+              name="area"
+              onChange={handleChange}
+              type="text"
+              placeholder=""
+            />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label>Location type</Form.Label>
@@ -63,10 +128,13 @@ const ExperienceModal = (props) => {
             <p>Start date*</p>
             <Row>
               <Col>
-                <Form.Control placeholder="month" />
-              </Col>
-              <Col>
-                <Form.Control placeholder="year" />
+                <Form.Control
+                  type="date"
+                  value={addedData.startDate}
+                  name="startDate"
+                  onChange={handleChange}
+                  placeholder="month"
+                />
               </Col>
             </Row>
           </Form.Group>
@@ -74,22 +142,36 @@ const ExperienceModal = (props) => {
             <p>End date*</p>
             <Row>
               <Col>
-                <Form.Control placeholder="month" />
-              </Col>
-              <Col>
-                <Form.Control placeholder="year" />
+                <Form.Control
+                  type="date"
+                  value={addedData.endDate}
+                  name="endDate"
+                  onChange={handleChange}
+                  placeholder="month"
+                />
               </Col>
             </Row>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={3} />
+            <Form.Control
+              value={addedData.description}
+              name="description"
+              onChange={handleChange}
+              as="textarea"
+              rows={3}
+            />
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={() => console.log("del")}>Delete</Button>
-        <Button onClick={props.onHide}>Save</Button>
+        <Button
+          onClick={() => {
+            dispatch(fetchProfile(endPoint, options, id, action));
+          }}
+        >
+          Save
+        </Button>
       </Modal.Footer>
     </Modal>
   );

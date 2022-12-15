@@ -17,14 +17,40 @@ import notification from "../Icon/notification.svg";
 import work from "../Icon/work.svg";
 import { useNavigate } from "react-router-dom";
 import SearchModel from "./SearchModel";
-import { CHANGE_CLICKED_SEARCH_STATUS } from "../redux/actions/actions";
+import {
+  ADD_QUERY,
+  ADD_SEARCH_RESULTS,
+  CHANGE_CLICKED_SEARCH_STATUS,
+} from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 const MainNavbar = () => {
   const clickedSearch = useSelector((state) => state.search.clicked);
+  const allProfiles = useSelector((state) => state.profiles.allProfiles);
+  const searchResults = useSelector((state) => state.search.searchResults);
+  const myProfile = useSelector((state) => state.profiles.myProfile);
+  const [query, setQuery] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const filterProfiles = (e) => {
+    dispatch({
+      type: ADD_QUERY,
+      payload: e,
+    });
+
+    const filteredResults = allProfiles.filter(
+      (profile) =>
+        profile.name.toLowerCase().includes(query) ||
+        profile.surname.toLowerCase().includes(query)
+    );
+    dispatch({
+      type: ADD_SEARCH_RESULTS,
+      payload: filteredResults,
+    });
+  };
 
   return (
     <Navbar expand="lg" className="navbar-main">
@@ -33,7 +59,7 @@ const MainNavbar = () => {
           <div
             className="logo-mini"
             onClick={() => {
-              navigate("/home");
+              navigate("/");
             }}
           >
             <img src={logomini} alt="" />
@@ -51,10 +77,16 @@ const MainNavbar = () => {
                   payload: !clickedSearch,
                 });
               }}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                filterProfiles(e.target.value);
+              }}
             />
             {clickedSearch && (
               <div className="search-model ">
-                <SearchModel />
+                {searchResults.slice(0, 5).map((result) => (
+                  <SearchModel resultData={result} key={result._id} />
+                ))}
               </div>
             )}
           </Form>
@@ -66,7 +98,7 @@ const MainNavbar = () => {
               <div
                 className=" d-flex flex-column align-items-center nav-icon menu-size"
                 onClick={() => {
-                  navigate("/home");
+                  navigate("/");
                 }}
               >
                 <div>
@@ -107,100 +139,106 @@ const MainNavbar = () => {
                 <p className="fs-12 nav-text">Notifications</p>
               </div>
             </Nav.Link>
-            <div className="profile-drop-down menu-size">
-              <img
-                src="https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg"
-                alt=""
-                className="profile-icon"
-              />
-              <NavDropdown
-                title="Me"
-                id="basic-nav-dropdown"
-                className="profile-name"
-              >
-                <NavDropdown.Item
-                  href="#action/3.1"
-                  className="dropdown-main-action d-flex align-items-center"
+
+            {myProfile && (
+              <div className="profile-drop-down menu-size">
+                <img src={myProfile.image} alt="" className="profile-icon" />
+                <NavDropdown
+                  title="Me"
+                  id="basic-nav-dropdown"
+                  className="profile-name"
                 >
-                  <span>
-                    <img
-                      src="https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg"
-                      alt=""
-                      className="profile-icon2 mr-2"
-                    />
-                  </span>
-                  <div style={{ color: "black" }}>
-                    <p className="fs-16 fw-700">User Name</p>
-                    <p className="fs-14 ">IT Specialist</p>
-                  </div>
-                </NavDropdown.Item>
-                <div
-                  href="#action/3.1.2"
-                  className="dropdown-secondary-action d-flex justify-content-center mt-2 mb-2"
-                >
-                  <Button
-                    className="btn nav-view-profile-btn fs-14"
+                  <NavDropdown.Item
+                    className="dropdown-main-action d-flex align-items-center"
                     onClick={() => {
-                      navigate("/profile/1234");
+                      navigate(`/profile/${myProfile._id}`);
                     }}
                   >
-                    View Profile
-                  </Button>
-                </div>
-                <NavDropdown.Divider />
-                <div
-                  href="#action/3.2"
-                  className="dropdown-main-action fs-16 fw-800 ml-4"
-                >
-                  Account
-                </div>
-                <NavDropdown.Item
-                  href="#action/3.2.1"
-                  className="dropdown-secondary-action fs-14"
-                >
-                  Try premium for free
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.2.2"
-                  className="dropdown-secondary-action fs-14"
-                >
-                  Settings & Privacy
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.2.3"
-                  className="dropdown-secondary-action fs-14"
-                >
-                  Help
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.2.4"
-                  className="dropdown-secondary-action fs-14"
-                >
-                  Language
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <div
-                  href="#action/3.3"
-                  className="dropdown-main-action fs-16 fw-800 ml-4"
-                >
-                  Manage
-                </div>
-                <NavDropdown.Item
-                  href="#action/3.3.1"
-                  className="dropdown-secondary-action fs-14"
-                >
-                  Posts & Activity
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.3.2"
-                  className="dropdown-secondary-action fs-14"
-                >
-                  Job Posting Account
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item className="fs-14">Sign Out</NavDropdown.Item>
-              </NavDropdown>
-            </div>
+                    <span>
+                      <img
+                        src={myProfile.image}
+                        alt=""
+                        className="profile-icon2 mr-2"
+                      />
+                    </span>
+                    <div style={{ color: "black" }}>
+                      <p className="fs-16 fw-700">
+                        {myProfile.name} {myProfile.surname}
+                      </p>
+                      <p className="fs-14 ">{myProfile.title}</p>
+                    </div>
+                  </NavDropdown.Item>
+                  <div
+                    href="#action/3.1.2"
+                    className="dropdown-secondary-action d-flex justify-content-center mt-2 mb-2"
+                  >
+                    <Button
+                      className="btn nav-view-profile-btn fs-14"
+                      onClick={() => {
+                        navigate(`/profile/${myProfile._id}`);
+                      }}
+                    >
+                      View Profile
+                    </Button>
+                  </div>
+                  <NavDropdown.Divider />
+                  <div
+                    href="#action/3.2"
+                    className="dropdown-main-action fs-16 fw-800 ml-4"
+                  >
+                    Account
+                  </div>
+                  <NavDropdown.Item
+                    href="#action/3.2.1"
+                    className="dropdown-secondary-action fs-14"
+                  >
+                    Try premium for free
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    href="#action/3.2.2"
+                    className="dropdown-secondary-action fs-14"
+                  >
+                    Settings & Privacy
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    href="#action/3.2.3"
+                    className="dropdown-secondary-action fs-14"
+                  >
+                    Help
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    href="#action/3.2.4"
+                    className="dropdown-secondary-action fs-14"
+                  >
+                    Language
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <div
+                    href="#action/3.3"
+                    className="dropdown-main-action fs-16 fw-800 ml-4"
+                  >
+                    Manage
+                  </div>
+                  <NavDropdown.Item
+                    href="#action/3.3.1"
+                    className="dropdown-secondary-action fs-14"
+                  >
+                    Posts & Activity
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    href="#action/3.3.2"
+                    className="dropdown-secondary-action fs-14"
+                  >
+                    Job Posting Account
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item className="fs-14">
+                    Sign Out
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </div>
+            )}
+
             <div className="profile-drop-down menu-size work">
               <img src={work} alt="" className="nav-menu-icon" />
               <NavDropdown

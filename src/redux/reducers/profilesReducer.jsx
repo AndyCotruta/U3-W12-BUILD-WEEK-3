@@ -1,8 +1,13 @@
-import { ADD_ALL_PROFILES, ADD_CLICKED_PROFILE } from "../actions/actions";
+import {
+  ADD_ALL_PROFILES,
+  ADD_CLICKED_PROFILE,
+  ADD_MY_PROFILE,
+} from "../actions/actions";
 
 const initialState = {
   allProfiles: [],
-  clickedProfile: [],
+  clickedProfile: null,
+  myProfile: null,
 };
 
 const profilesReducer = (state = initialState, action) => {
@@ -18,6 +23,13 @@ const profilesReducer = (state = initialState, action) => {
       return {
         ...state,
         clickedProfile: action.payload,
+      };
+    }
+
+    case ADD_MY_PROFILE: {
+      return {
+        ...state,
+        myProfile: action.payload,
       };
     }
 

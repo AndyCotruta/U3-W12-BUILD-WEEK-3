@@ -498,6 +498,10 @@ a {
   background-color: var(--linkedin-bg-off-white);
 }
 
+.width-hover {
+  width: 100px;
+}
+
 /* ....................... Utility classes ........................ */
 
 .sidebarUL {

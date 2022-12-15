@@ -7,11 +7,12 @@ import ExperienceModal from "./ExperienceModal";
 import { useParams } from "react-router-dom";
 
 const Experience = (props) => {
-  const experiences = useSelector((state) => state.experience.expData);
+  // const experiences = useSelector((state) => state.experience.expData);
+  const experiences = props.experiences;
   const [modalShow, setModalShow] = useState(false);
   const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
   const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4NGEyNzQwNWJkYTAwMTUwOTE4NDQiLCJpYXQiOjE2NzA5MjQ4MzksImV4cCI6MTY3MjEzNDQzOX0.x2Rft_8jW0eH4mFzHLq669IFCzGAFGCn7LuvHCf2udU";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
   const options = {
     method: "GET",
     headers: {
@@ -19,16 +20,17 @@ const Experience = (props) => {
     },
   };
   const params = useParams();
-  const id =
-    params.userId === props.currentProfile._id
-      ? `63970d18c96dfb001521a5c9/experiences`
-      : `${props.currentProfile._id}/experiences`;
+  const id = params.userId === `${props.currentProfile._id}/experiences`;
   const action = GET_EXPERIENCE;
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch({
+      type: action,
+      payload: [],
+    });
     dispatch(fetchProfile(endPoint, options, id, action));
-  }, [props.currentProfile._id]);
+  }, [props.currentProfile]);
 
   return (
     <div className="experience-section ">

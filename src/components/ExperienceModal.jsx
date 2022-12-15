@@ -1,6 +1,28 @@
+import { useEffect, useState } from "react";
 import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 
 const ExperienceModal = (props) => {
+  // const addedData = {
+  //   role: "CTO",
+  //   company: "Strive School",
+  //   startDate: "2019-06-16",
+  //   endDate: "2019-06-16",
+  // };
+
+  const [addedData, setAddedData] = useState({
+    role: "",
+    company: "",
+    title: "",
+  });
+  //this is for edit :)
+  // useEffect(() => {
+  //   setAddedData(props.expData);
+  // }, [props.expData]);
+
+  function handleChange(event) {
+    setAddedData({ ...addedData, [event.target.name]: event.target.value });
+  }
+
   return (
     <Modal
       {...props}
@@ -10,7 +32,7 @@ const ExperienceModal = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className="mx-3">
-          Edit Experience
+          Add Experience
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -18,7 +40,13 @@ const ExperienceModal = (props) => {
         <Form className="mx-3">
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Title*</Form.Label>
-            <Form.Control type="text" placeholder="" />
+            <Form.Control
+              value={addedData.title}
+              onChange={handleChange}
+              name="title"
+              type="text"
+              placeholder=""
+            />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label>Employment type</Form.Label>
@@ -88,7 +116,6 @@ const ExperienceModal = (props) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={() => console.log("del")}>Delete</Button>
         <Button onClick={props.onHide}>Save</Button>
       </Modal.Footer>
     </Modal>

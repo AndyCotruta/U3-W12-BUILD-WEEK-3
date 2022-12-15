@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HiOutlinePlus } from "react-icons/hi";
 import { HiOutlinePencil } from "react-icons/hi";
 import ExperienceModal from "./ExperienceModal";
+import { useParams } from "react-router-dom";
 
 const Experience = (props) => {
   const experiences = useSelector((state) => state.experience.expData);
@@ -21,7 +22,11 @@ const Experience = (props) => {
       Authorization: "Bearer " + accessToken,
     },
   };
-  const id = `${props.currentProfile._id}/experiences`;
+  const params = useParams();
+  const id =
+    params.userId === props.currentProfile._id
+      ? `63970d18c96dfb001521a5c9/experiences`
+      : `${props.currentProfile._id}/experiences`;
   const action = GET_EXPERIENCE;
   const dispatch = useDispatch();
 
@@ -36,13 +41,13 @@ const Experience = (props) => {
         {/* this gets displayed when on user page */}
         <div>
           {" "}
-          <button className="experience-buttons">
-            <HiOutlinePlus className="experience-buttons-icon" />
-          </button>
           <button
             className="experience-buttons"
             onClick={() => setModalShow(true)}
           >
+            <HiOutlinePlus className="experience-buttons-icon" />
+          </button>
+          <button className="experience-buttons">
             <HiOutlinePencil className="experience-buttons-icon" />
           </button>
           <ExperienceModal

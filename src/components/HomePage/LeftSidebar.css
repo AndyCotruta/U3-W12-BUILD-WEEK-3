@@ -80,4 +80,6 @@
   border-radius: 10px 10px 0 0;
   padding: 15px;
   border-bottom: 1px solid var(--linkedin-white-grey);
+  position: sticky;
+  top: 60px;
 }

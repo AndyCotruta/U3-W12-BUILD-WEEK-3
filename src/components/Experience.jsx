@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { getExperienceAction } from "../redux/actions/actions";
+import {
+  fetchProfile,
+  getExperienceAction,
+  GET_EXPERIENCE,
+} from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { HiOutlinePlus } from "react-icons/hi";
 import { HiOutlinePencil } from "react-icons/hi";
@@ -8,12 +12,22 @@ import ExperienceModal from "./ExperienceModal";
 const Experience = (props) => {
   const experiences = useSelector((state) => state.experience.expData);
   const [modalShow, setModalShow] = useState(false);
-
+  const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4NGEyNzQwNWJkYTAwMTUwOTE4NDQiLCJpYXQiOjE2NzA5MjQ4MzksImV4cCI6MTY3MjEzNDQzOX0.x2Rft_8jW0eH4mFzHLq669IFCzGAFGCn7LuvHCf2udU";
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + accessToken,
+    },
+  };
+  const id = `${props.currentProfile._id}/experiences`;
+  const action = GET_EXPERIENCE;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getExperienceAction());
-  }, []);
+    dispatch(fetchProfile(endPoint, options, id, action));
+  }, [props.currentProfile._id]);
 
   return (
     <div className="experience-section ">

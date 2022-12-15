@@ -12,8 +12,7 @@ const HomePage = () => {
   const endPoint = "https://striveschool-api.herokuapp.com/api/profile/me";
   const action = ADD_MY_PROFILE;
   const id = "";
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4NGEyNzQwNWJkYTAwMTUwOTE4NDQiLCJpYXQiOjE2NzA5MjQ4MzksImV4cCI6MTY3MjEzNDQzOX0.x2Rft_8jW0eH4mFzHLq669IFCzGAFGCn7LuvHCf2udU";
+  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4NGEyNzQwNWJkYTAwMTUwOTE4NDQiLCJpYXQiOjE2NzA5MjQ4MzksImV4cCI6MTY3MjEzNDQzOX0.x2Rft_8jW0eH4mFzHLq669IFCzGAFGCn7LuvHCf2udU";
   const options = {
     method: "GET",
     headers: {
@@ -27,14 +26,18 @@ const HomePage = () => {
 
   return (
     <>
-      <LeftSidebar myProfileData={myProfile} />
-      <Col>
-        <MainPostsContainer />
-      </Col>
+      {myProfile && (
+        <>
+          <LeftSidebar myProfileData={myProfile} />
+          <Col>
+            <MainPostsContainer />
+          </Col>
 
-      <Col>
-        <RightSideBar />
-      </Col>
+          <Col>
+            <RightSideBar />
+          </Col>
+        </>
+      )}
     </>
   );
 };

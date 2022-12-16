@@ -92,9 +92,12 @@ const MainNavbar = () => {
               />
               {clickedSearch && (
                 <div className="search-model ">
-                  {searchResults.slice(0, 5).map((result) => (
-                    <SearchModel resultData={result} key={result._id} />
-                  ))}
+                  {searchResults.lenght !== 0 &&
+                    searchResults
+                      .slice(0, 5)
+                      .map((result) => (
+                        <SearchModel resultData={result} key={result._id} />
+                      ))}
                 </div>
               )}
             </Form>

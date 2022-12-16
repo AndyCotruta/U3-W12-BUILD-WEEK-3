@@ -49,6 +49,10 @@ const UserProfile = () => {
     dispatch(fetchProfile(endPoint, options, id, action));
   }, [addedExpData]);
 
+  useEffect(() => {
+    console.log(experiences);
+  }, []);
+
   return (
     <>
       {editExpSection ? (
@@ -57,12 +61,14 @@ const UserProfile = () => {
           <Col sm={12} md={6} lg={8}>
             <ProfileSection currentProfile={currentProfile} />
             <div className="cards-main-container cd-width">
-              <div className="experience cd cd-width ff">
-                <Experience
-                  currentProfile={currentProfile}
-                  experiences={experiences}
-                />
-              </div>
+              {experiences.length !== 0 && (
+                <div className="experience cd cd-width ff">
+                  <Experience
+                    currentProfile={currentProfile}
+                    experiences={experiences}
+                  />
+                </div>
+              )}
             </div>{" "}
           </Col>
           <Col sm={12} md={6} lg={4}>
@@ -79,10 +85,14 @@ const UserProfile = () => {
                 <Activity />
               </div>
               <div className="experience cd cd-width ff">
-                <Experience
-                  currentProfile={currentProfile}
-                  experiences={experiences}
-                />
+                {experiences.length !== 0 && (
+                  <div className="experience cd cd-width ff">
+                    <Experience
+                      currentProfile={currentProfile}
+                      experiences={experiences}
+                    />
+                  </div>
+                )}
               </div>
               <div className="education cd cd-width ff">
                 <Education />

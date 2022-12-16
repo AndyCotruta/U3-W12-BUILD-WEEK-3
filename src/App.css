@@ -538,6 +538,11 @@ a {
   border-bottom-right-radius: 0;
 }
 
+.sticky {
+  position: sticky;
+  top: 60px;
+}
+
 .mini-profile {
   width: 72px;
   height: 72px;

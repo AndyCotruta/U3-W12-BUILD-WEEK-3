@@ -60,7 +60,7 @@ const RightSideBar = () => {
         ))}
       </ul>
       <ActionLi text="Show More" icon={dropdownIcon} />
-      <div className="sidebarUL profilesUL mb-0">
+      <div className="sidebarUL profilesUL mb-0 sticky">
         <div className="fw-bold pt-3 fs-20">
           <div className="d-flex align-items-center">
             <span className="linkedin-d-blue mr-1">

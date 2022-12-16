@@ -42,7 +42,7 @@ const MainNavbar = () => {
   return (
     <Navbar expand="lg" className="navbar-main">
       <Container className="px-0">
-        <div className="d-flex justify-content-between" style={{ width: "100%" }}>
+        <div className="d-flex justify-content-between" style={{ width: "100%", paddingInline: "15px" }}>
           <div className="logo-on-collapse d-flex align-items-center ">
             <div
               className="logo-mini"

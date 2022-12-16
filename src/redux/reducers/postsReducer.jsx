@@ -1,7 +1,8 @@
-import { ADD_ALL_POSTS } from "../actions/actions";
+import { ADD_ALL_POSTS, CHANGE_SHOW_POST_MODAL } from "../actions/actions";
 
 const initialState = {
   posts: [],
+  showPostModal: false,
 };
 
 const postsReducer = (state = initialState, action) => {
@@ -10,6 +11,13 @@ const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: action.payload,
+      };
+    }
+
+    case CHANGE_SHOW_POST_MODAL: {
+      return {
+        ...state,
+        showPostModal: action.payload,
       };
     }
 

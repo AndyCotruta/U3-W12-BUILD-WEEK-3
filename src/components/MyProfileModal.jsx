@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -25,6 +25,10 @@ const MyProfileModal = (props) => {
       [event.target.name]: event.target.value,
     });
   }
+
+  useEffect(() => {
+    setaddedMyProfileData(myProfile);
+  }, [myProfile]);
 
   const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
   const accessToken =
@@ -53,7 +57,7 @@ const MyProfileModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Name*</Form.Label>
             <Form.Control
-              value={myProfile.name}
+              value={addedMyProfileData.name}
               name="name"
               onChange={handleChange}
               type="text"
@@ -63,7 +67,7 @@ const MyProfileModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Surname*</Form.Label>
             <Form.Control
-              value={myProfile.surname}
+              value={addedMyProfileData.surname}
               name="surname"
               onChange={handleChange}
               type="text"
@@ -73,7 +77,7 @@ const MyProfileModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Email*</Form.Label>
             <Form.Control
-              value={myProfile.email}
+              value={addedMyProfileData.email}
               name="email"
               onChange={handleChange}
               type="text"
@@ -83,7 +87,7 @@ const MyProfileModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Title*</Form.Label>
             <Form.Control
-              value={myProfile.title}
+              value={addedMyProfileData.title}
               name="title"
               onChange={handleChange}
               type="text"
@@ -93,7 +97,7 @@ const MyProfileModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Location*</Form.Label>
             <Form.Control
-              value={myProfile.area}
+              value={addedMyProfileData.area}
               name="area"
               onChange={handleChange}
               type="text"
@@ -103,7 +107,7 @@ const MyProfileModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>About*</Form.Label>
             <Form.Control
-              value={myProfile.bio}
+              value={addedMyProfileData.bio}
               name="bio"
               onChange={handleChange}
               type="text"

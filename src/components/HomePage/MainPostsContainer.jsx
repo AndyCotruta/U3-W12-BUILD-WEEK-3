@@ -1,8 +1,15 @@
 import WritePost from "./WritePost";
 import PostsDisplay from "./PostsDisplay";
+
 import { Col } from "react-bootstrap";
 
+import { propTypes } from "react-bootstrap/esm/Image";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+
 const MainPostsContainer = () => {
+  const allPosts = useSelector((state) => state.posts.posts);
+
   return (
     <>
       <Col>
@@ -13,7 +20,7 @@ const MainPostsContainer = () => {
             Sort by: <span className="fw-800">Top</span>
           </span>
         </div>
-        <PostsDisplay />
+        {allPosts.length !== 0 && allPosts.slice(Math.floor(Math.random(0, allPosts.length)), 20).map((post) => <PostsDisplay post={post} key={post._id} />)}
       </Col>
     </>
   );

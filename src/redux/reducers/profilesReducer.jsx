@@ -2,12 +2,14 @@ import {
   ADD_ALL_PROFILES,
   ADD_CLICKED_PROFILE,
   ADD_MY_PROFILE,
+  CHANGE_SHOW_PROFILE_MODAL,
 } from "../actions/actions";
 
 const initialState = {
   allProfiles: [],
   clickedProfile: null,
   myProfile: null,
+  showProfileModal: false,
 };
 
 const profilesReducer = (state = initialState, action) => {
@@ -32,7 +34,12 @@ const profilesReducer = (state = initialState, action) => {
         myProfile: action.payload,
       };
     }
-
+    case CHANGE_SHOW_PROFILE_MODAL: {
+      return {
+        ...state,
+        showProfileModal: action.payload,
+      };
+    }
     default:
       return state;
   }

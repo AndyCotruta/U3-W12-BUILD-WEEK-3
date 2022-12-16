@@ -9,7 +9,10 @@ import notification from "../Icon/notification.svg";
 import work from "../Icon/work.svg";
 import { useNavigate } from "react-router-dom";
 import SearchModel from "./SearchModel";
-import { ADD_QUERY, ADD_SEARCH_RESULTS, CHANGE_CLICKED_SEARCH_STATUS } from "../redux/actions/actions";
+
+// import { ADD_QUERY, ADD_SEARCH_RESULTS, CHANGE_CLICKED_SEARCH_STATUS } from "../redux/actions/actions";
+import { ADD_CLICKED_PROFILE, ADD_QUERY, ADD_SEARCH_RESULTS, CHANGE_CLICKED_SEARCH_STATUS } from "../redux/actions/actions";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
@@ -133,6 +136,10 @@ const MainNavbar = () => {
                       className="dropdown-main-action d-flex align-items-center"
                       onClick={() => {
                         navigate(`/profile/${myProfile._id}`);
+                        dispatch({
+                          type: ADD_CLICKED_PROFILE,
+                          payload: myProfile,
+                        });
                       }}
                     >
                       <span>

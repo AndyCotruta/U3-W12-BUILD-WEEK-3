@@ -3,7 +3,7 @@ import comment from "../../Icon/chat.svg";
 import repost from "../../Icon/share.svg";
 import share from "../../Icon/Send 2.svg";
 
-const PostsDisplay = () => {
+const PostsDisplay = (props) => {
   return (
     <>
       <div className="mainContainerPost">
@@ -12,17 +12,14 @@ const PostsDisplay = () => {
             <img className="userPicturePost mr-3" src="https://picsum.photos/200/" alt="profile.name" />
           </div>
           <div>
-            <span className="fs-14 fw-700 mr-2">Name</span>
-            <span className="fs-14 fw-700 mr-2">Surname</span>
-            <div className="fs-12  ">profile.title</div>
+            <span className="fs-14 fw-700 mr-2">{props.post.user.name}</span>
+            <span className="fs-14 fw-700 mr-2">{props.post.user.surname}</span>
+            <div className="fs-12  ">{props.post.user.title}</div>
           </div>
         </div>
 
         <div className="post-content p-3 fs-14">
-          <p>
-            Najbardziej kompaktowy z foteli rajdowych PLAYSEAT®, jednak posiadający wiele unikatowych profesjonalnych rozwiązań. Pierwszy krok do pełnego przeżywania gier rajdowych, czy wyścigowych.
-            Pełna funkcjonalność mocowania różnych zestawów kierownic. Jednak najważniejsza jest tu możliwość złożenia fotela do naprawdę niewielkich rozmiarów.
-          </p>
+          <p>{props.post.text}</p>
         </div>
 
         <div style={{ height: "540px" }}>

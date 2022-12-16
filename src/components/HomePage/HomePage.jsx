@@ -3,12 +3,17 @@ import MainPostsContainer from "./MainPostsContainer";
 import { Col } from "react-bootstrap";
 import LeftSidebar from "./LeftSidebar";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_MY_PROFILE, fetchProfile } from "../../redux/actions/actions";
+import {
+  ADD_ALL_POSTS,
+  ADD_MY_PROFILE,
+  fetchProfile,
+} from "../../redux/actions/actions";
 import { useEffect } from "react";
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.profiles.myProfile);
+
   const endPoint = "https://striveschool-api.herokuapp.com/api/profile/me";
   const action = ADD_MY_PROFILE;
   const id = "";
@@ -21,8 +26,12 @@ const HomePage = () => {
     },
   };
 
+  const postsEndPoint = "https://striveschool-api.herokuapp.com/api/posts/ ";
+  const postAction = ADD_ALL_POSTS;
+
   useEffect(() => {
     dispatch(fetchProfile(endPoint, options, id, action));
+    dispatch(fetchProfile(postsEndPoint, options, id, postAction));
   }, []);
 
   return (

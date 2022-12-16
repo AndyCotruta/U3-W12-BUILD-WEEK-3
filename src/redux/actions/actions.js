@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+export const ADD_ALL_POSTS = "ADD_ALL_POSTS";
 
 export const ADD_ALL_PROFILES = "ADD_ALL_PROFILES";
 export const ADD_CLICKED_PROFILE = "ADD_CLICKED_PROFILE";

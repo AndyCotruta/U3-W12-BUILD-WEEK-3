@@ -1,6 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 
-const PostsDisplay = () => {
+const PostsDisplay = (props) => {
   return (
     <>
       <div className="mainContainerPost">
@@ -13,11 +13,13 @@ const PostsDisplay = () => {
             />{" "}
           </div>
           <div>
-            <div>profile.name profile.surname</div>
-            <div>profile.title</div>
+            <div>
+              {props.post.user.name} {props.post.user.surname}
+            </div>
+            <div>{props.post.user.title}</div>
           </div>
           <Col xs={12}>
-            <div>post text</div>
+            <div>{props.post.text}</div>
           </Col>
         </Row>
 

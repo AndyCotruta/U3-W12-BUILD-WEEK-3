@@ -9,7 +9,11 @@ const PostsDisplay = (props) => {
       <div className="mainContainerPost mb-3">
         <div className="d-flex align-items-center p-3">
           <div>
-            <img className="userPicturePost mr-3" src="https://picsum.photos/200/" alt="profile.name" />
+            <img
+              className="userPicturePost mr-3"
+              src={props.post.user.image}
+              alt="profile.name"
+            />
           </div>
           <div>
             <span className="fs-14 fw-700 mr-2">{props.post.user.name}</span>
@@ -24,7 +28,7 @@ const PostsDisplay = (props) => {
 
         <div style={{ height: "540px" }}>
           <img
-            src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            src={"https://picsum.photos/200" + props.i}
             alt="random-pic"
             className="w-100"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -33,21 +37,37 @@ const PostsDisplay = (props) => {
 
         <div style={{ marginBlockStart: "40px" }}>
           <div className="like-box-feed wrapper my-1 fs-14 fw-800 mx-3">
-            <button aria-label="Add a photo" className="d-flex align-items-center justify-content-center share-box-btn  py-2 px-1 my-1 width-hover">
+            <button
+              aria-label="Add a photo"
+              className="d-flex align-items-center justify-content-center share-box-btn  py-2 px-1 my-1 width-hover"
+            >
               <img src={like} alt="" />
               <span className="share-box-btn-text  ml-2 fs-16">Like</span>
             </button>
-            <button aria-label="Add a video" className="d-flex align-items-center justify-content-center share-box-btn py-2 px-1 my-1 width-hover">
+            <button
+              aria-label="Add a video"
+              className="d-flex align-items-center justify-content-center share-box-btn py-2 px-1 my-1 width-hover"
+            >
               <img src={comment} alt="" />
               <span className="share-box-btn-text  ml-2 fs-16">Comment</span>
             </button>
-            <button aria-label="Create an event" className="d-flex align-items-center  justify-content-center share-box-btn py-2 px-1 my-1 width-hover">
+            <button
+              aria-label="Create an event"
+              className="d-flex align-items-center  justify-content-center share-box-btn py-2 px-1 my-1 width-hover"
+            >
               <img src={repost} alt="" />
-              <span className="share-box-feed-entry-toolbar__item-text  ml-2 fs-16">Repost</span>
+              <span className="share-box-feed-entry-toolbar__item-text  ml-2 fs-16">
+                Repost
+              </span>
             </button>
-            <button aria-label="Write an article on LinkedIn" className="d-flex align-items-center justify-content-center share-box-btn py-2 px-1 my-1 width-hover">
+            <button
+              aria-label="Write an article on LinkedIn"
+              className="d-flex align-items-center justify-content-center share-box-btn py-2 px-1 my-1 width-hover"
+            >
               <img src={share} alt="" />
-              <span className="share-box-feed-entry-toolbar__item-text ml-2 fs-16">Send</span>
+              <span className="share-box-feed-entry-toolbar__item-text ml-2 fs-16">
+                Send
+              </span>
             </button>
           </div>
         </div>

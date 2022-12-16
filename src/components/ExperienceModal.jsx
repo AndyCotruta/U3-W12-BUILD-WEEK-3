@@ -3,12 +3,7 @@ import { Modal, Button, Form, Row, Col, FormControl } from "react-bootstrap";
 import { propTypes } from "react-bootstrap/esm/Image";
 import { useDispatch, useSelector } from "react-redux";
 import { parseISO, format } from "date-fns";
-import {
-  ADD_EXPERIENCE,
-  CHANGE_SHOW_MODAL,
-  fetchProfile,
-  GET_EXPERIENCE,
-} from "../redux/actions/actions";
+import { ADD_EXPERIENCE, CHANGE_SHOW_MODAL, fetchProfile, GET_EXPERIENCE } from "../redux/actions/actions";
 
 const ExperienceModal = (props) => {
   // const addedData = {
@@ -32,8 +27,7 @@ const ExperienceModal = (props) => {
   }
 
   const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
+  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
   const options = {
     method: "POST",
     headers: {
@@ -51,23 +45,15 @@ const ExperienceModal = (props) => {
     body: JSON.stringify(addedData),
   };
   const id = `${props.currentProfile._id}/experiences`;
-  const editId =
-    props.currentExpData &&
-    `${props.currentProfile._id}/experiences/${props.currentExpData._id}`;
+  const editId = props.currentExpData && `${props.currentProfile._id}/experiences/${props.currentExpData._id}`;
   const action = ADD_EXPERIENCE;
   const dispatch = useDispatch();
 
   return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      className="experience-modal"
-    >
+    <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" className="experience-modal">
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className="mx-3">
-          {props.currentExpData ? <span>Edit</span> : <span>Add</span>}{" "}
-          Experience{" "}
+          {props.currentExpData ? <span>Edit</span> : <span>Add</span>} Experience{" "}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -80,17 +66,7 @@ const ExperienceModal = (props) => {
         >
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Role*</Form.Label>
-            <Form.Control
-              value={
-                props.currentExpData
-                  ? props.currentExpData.role
-                  : addedData.role
-              }
-              onChange={handleChange}
-              name="role"
-              type="text"
-              placeholder=""
-            />
+            <Form.Control value={props.currentExpData ? props.currentExpData.role : addedData.role} onChange={handleChange} name="role" type="text" placeholder="" />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label>Employment type</Form.Label>
@@ -108,39 +84,17 @@ const ExperienceModal = (props) => {
             <p>
               Learn more about{" "}
               <span>
-                <a href="https://www.linkedin.com/help/linkedin/answer/a549563?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_position%3BgJ0yLoo2SCiO0YPLpEz2Rg%3D%3D">
-                  employment types
-                </a>
+                <a href="https://www.linkedin.com/help/linkedin/answer/a549563?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_position%3BgJ0yLoo2SCiO0YPLpEz2Rg%3D%3D">employment types</a>
               </span>
             </p>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Company name*</Form.Label>
-            <Form.Control
-              value={
-                props.currentExpData
-                  ? props.currentExpData.company
-                  : addedData.company
-              }
-              name="company"
-              onChange={handleChange}
-              type="text"
-              placeholder=""
-            />
+            <Form.Control value={props.currentExpData ? props.currentExpData.company : addedData.company} name="company" onChange={handleChange} type="text" placeholder="" />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Location*</Form.Label>
-            <Form.Control
-              value={
-                props.currentExpData
-                  ? props.currentExpData.area
-                  : addedData.area
-              }
-              name="area"
-              onChange={handleChange}
-              type="text"
-              placeholder=""
-            />
+            <Form.Control value={props.currentExpData ? props.currentExpData.area : addedData.area} name="area" onChange={handleChange} type="text" placeholder="" />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label>Location type</Form.Label>
@@ -157,14 +111,14 @@ const ExperienceModal = (props) => {
               <Col>
                 <Form.Control
                   type="date"
-                  value={
-                    props.currentExpData
-                      ? format(
-                          parseISO(props.currentExpData.startDate),
-                          "yyyy-MM-dd"
-                        )
-                      : addedData.startDate
-                  }
+                  // value={
+                  //   props.currentExpData
+                  //     ? format(
+                  //         parseISO(props.currentExpData.startDate),
+                  //         "yyyy-MM-dd"
+                  //       )
+                  //     : addedData.startDate
+                  // }
                   name="startDate"
                   onChange={handleChange}
                   placeholder="month"
@@ -178,14 +132,7 @@ const ExperienceModal = (props) => {
               <Col>
                 <Form.Control
                   type="date"
-                  value={
-                    props.currentExpData
-                      ? format(
-                          parseISO(props.currentExpData.endDate),
-                          "yyyy-MM-dd"
-                        )
-                      : addedData.endDate
-                  }
+                  // value={props.currentExpData ? format(parseISO(props.currentExpData.endDate), "yyyy-MM-dd") : addedData.endDate}
                   name="endDate"
                   onChange={handleChange}
                   placeholder="month"
@@ -195,17 +142,7 @@ const ExperienceModal = (props) => {
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Description</Form.Label>
-            <Form.Control
-              value={
-                props.currentExpData
-                  ? props.currentExpData.description
-                  : addedData.description
-              }
-              name="description"
-              onChange={handleChange}
-              as="textarea"
-              rows={3}
-            />
+            <Form.Control value={props.currentExpData ? props.currentExpData.description : addedData.description} name="description" onChange={handleChange} as="textarea" rows={3} />
           </Form.Group>
         </Form>
       </Modal.Body>

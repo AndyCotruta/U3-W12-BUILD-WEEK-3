@@ -41,7 +41,7 @@
 }
 
 .career {
-  width: 220px;
+  width: 100px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

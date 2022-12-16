@@ -55,7 +55,7 @@ const LeftSidebar = (props) => {
           </div>
         </div>
 
-        <div className="mt-4 secondary-side-nav collapse-hide">
+        <div className="mt-5 secondary-side-nav collapse-hide">
           <p className="ml-0 mb-2 fs-12">Recent</p>
           <div className="ml-2 fs-12 fw-800">
             <p className="mb-2 d-flex">

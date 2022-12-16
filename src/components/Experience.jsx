@@ -13,10 +13,12 @@ import { HiOutlinePencil, HiTrash } from "react-icons/hi";
 import { IoMdArrowBack } from "react-icons/io";
 import ExperienceModal from "./ExperienceModal";
 import { useParams } from "react-router-dom";
+import { format, parse, parseISO } from "date-fns";
 
 const Experience = (props) => {
   const dispatch = useDispatch();
   const params = useParams();
+
   // const experiences = useSelector((state) => state.experience.expData);
   const experiences = props.experiences;
   const showModal = useSelector((state) => state.experience.showModal);
@@ -30,6 +32,8 @@ const Experience = (props) => {
   const editExpSection = useSelector(
     (state) => state.experience.showEditExpSection
   );
+  const isMyProfile =
+    myProfile && clickedProfile && myProfile._id === clickedProfile._id;
   // const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
   // const accessToken =
   //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
@@ -89,7 +93,7 @@ const Experience = (props) => {
         </h3>
         {/* this gets displayed when on user page */}
         <div>
-          {myProfile._id === clickedProfile._id && (
+          {isMyProfile && (
             <>
               <button
                 className="experience-buttons"
@@ -145,7 +149,10 @@ const Experience = (props) => {
             <p className="fs-16 fw-800">{experience.role}</p>
             <p className="fs-14">{experience.company}</p>
             <span className="fs-14 ld-grey">
-              from {experience.startDate.slice(0, 10)}
+              from{" "}
+              {experience.startDate &&
+                experience.startDate !== null &&
+                format(parseISO(experience.startDate), "yyyy-MM-dd")}
             </span>
             {/* <span className="fs-14 ld-grey"> until </span>
             <span className="fs-14 ld-grey">

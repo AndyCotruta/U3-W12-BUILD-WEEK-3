@@ -70,13 +70,7 @@ const MainNavbar = () => {
                   filterProfiles(e.target.value);
                 }}
               />
-              {clickedSearch && (
-                <div className="search-model ">
-                  {searchResults.slice(0, 5).map((result) => (
-                    <SearchModel resultData={result} key={result._id} />
-                  ))}
-                </div>
-              )}
+              {clickedSearch && <div className="search-model ">{searchResults.length !== 0 && searchResults.slice(0, 5).map((result) => <SearchModel resultData={result} key={result._id} />)}</div>}
             </Form>
           </div>
 

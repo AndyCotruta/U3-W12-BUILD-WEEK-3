@@ -4,7 +4,12 @@ import premium from "../../Icon/Premium.svg";
 import items from "../../Icon/items.svg";
 import hashtag from "../../Icon/hashtag.svg";
 import { propTypes } from "react-bootstrap/esm/Image";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const LeftSidebar = (props) => {
+  const myProfile = useSelector((state) => state.profiles.myProfile);
+  const navigate = useNavigate();
+
   return (
     <>
       <Col className="left-side-col">
@@ -12,14 +17,25 @@ const LeftSidebar = (props) => {
           <div className="profile-cover-mini">
             <img
               src="https://images.ctfassets.net/7thvzrs93dvf/wpImage18643/2f45c72db7876d2f40623a8b09a88b17/linkedin-default-background-cover-photo-1.png?w=790&h=196&q=90&fm=png"
-              alt=""
+              alt="profile_cover"
             />
             <div className="profile-picture-mini">
-              <img src={props.myProfileData.image} alt="" />
+              <img
+                src={props.myProfileData.image}
+                alt={props.myProfileData.name}
+                onClick={() => {
+                  navigate(`/profile/${myProfile._id}`);
+                }}
+              />
             </div>
           </div>
           <div className="profile-text-area-mini">
-            <div className="profile-text-mini">
+            <div
+              className="profile-text-mini"
+              onClick={() => {
+                navigate(`/profile/${myProfile._id}`);
+              }}
+            >
               <p className="username-mini fs-16 fw-700 margin-0">
                 {props.myProfileData.name} {props.myProfileData.surname}
               </p>

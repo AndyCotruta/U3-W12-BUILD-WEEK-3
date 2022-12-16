@@ -92,7 +92,7 @@ const MainNavbar = () => {
               />
               {clickedSearch && (
                 <div className="search-model ">
-                  {searchResults.lenght !== 0 &&
+                  {searchResults.length !== 0 &&
                     searchResults
                       .slice(0, 5)
                       .map((result) => (

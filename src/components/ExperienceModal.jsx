@@ -26,10 +26,6 @@ const ExperienceModal = (props) => {
     description: "",
     area: "",
   });
-  //this is for edit :)
-  // useEffect(() => {
-  //   setAddedData(props.expData);
-  // }, [props.expData]);
 
   function handleChange(event) {
     setAddedData({ ...addedData, [event.target.name]: event.target.value });
@@ -46,7 +42,18 @@ const ExperienceModal = (props) => {
     },
     body: JSON.stringify(addedData),
   };
+  const editOptions = {
+    method: "PUT",
+    headers: {
+      Authorization: "Bearer " + accessToken,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(addedData),
+  };
   const id = `${props.currentProfile._id}/experiences`;
+  const editId =
+    props.currentExpData &&
+    `${props.currentProfile._id}/experiences/${props.currentExpData._id}`;
   const action = ADD_EXPERIENCE;
   const dispatch = useDispatch();
 
@@ -204,7 +211,17 @@ const ExperienceModal = (props) => {
       </Modal.Body>
       <Modal.Footer>
         {props.currentExpData ? (
-          <Button>Update</Button>
+          <Button
+            onClick={() => {
+              dispatch({
+                type: CHANGE_SHOW_MODAL,
+                payload: false,
+              });
+              dispatch(fetchProfile(endPoint, editOptions, editId, action));
+            }}
+          >
+            Update
+          </Button>
         ) : (
           <Button
             onClick={() => {

@@ -76,13 +76,7 @@ const UserProfile = () => {
               <div className="activity">
                 <Activity />
               </div>
-              <div className="experience cd cd-width ff">
-                {experiences.length !== 0 && (
-                  <div className="experience cd cd-width ff">
-                    <Experience currentProfile={currentProfile} experiences={experiences} />
-                  </div>
-                )}
-              </div>
+              <div className="experience cd cd-width ff">{experiences.length !== 0 && <Experience currentProfile={currentProfile} experiences={experiences} />}</div>
               <div className="education cd cd-width ff">
                 <Education />
               </div>

@@ -623,6 +623,23 @@ a {
   box-shadow: inset 0px 0px 0px 2px var(--linkedin-white);
 }
 
+.post-text {
+  border: none !important;
+}
+
+.modal-content {
+  border-radius: 11px !important;
+}
+
+.btn-primary {
+  color: var(--linkedin-white);
+  background-color: var(--linkedin-dark-blue);
+  border-color: transparent;
+  border-radius: 50px;
+  font-weight: 900;
+  width: 60px;
+}
+
 @media screen and (max-width: 1000px) {
   /* .navbar-nav {
     display: flex;

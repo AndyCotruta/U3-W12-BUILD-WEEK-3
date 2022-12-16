@@ -5,6 +5,7 @@ import {
   fetchProfile,
   GET_EXPERIENCE,
   ADD_CURRENT_EXP_DATA,
+  ADD_EXPERIENCE,
 } from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { HiOutlinePlus } from "react-icons/hi";
@@ -15,11 +16,14 @@ import { useParams } from "react-router-dom";
 
 const Experience = (props) => {
   const dispatch = useDispatch();
+  const params = useParams();
   // const experiences = useSelector((state) => state.experience.expData);
   const experiences = props.experiences;
   const showModal = useSelector((state) => state.experience.showModal);
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const clickedProfile = useSelector((state) => state.profiles.clickedProfile);
+  const currentProfile =
+    params.userId === myProfile._id ? myProfile : clickedProfile;
   const currentExpData = useSelector(
     (state) => state.experience.currentExpData
   );
@@ -47,6 +51,20 @@ const Experience = (props) => {
   //   });
   //   dispatch(fetchProfile(endPoint, options, id, action));
   // }, [props.currentProfile]);
+
+  const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
+  const options = {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + accessToken,
+    },
+  };
+  const deleteId =
+    props.currentExpData &&
+    `${currentProfile._id}/experiences/${currentExpData._id}`;
+  const action = ADD_EXPERIENCE;
 
   return (
     <div className="experience-section ">
@@ -138,7 +156,26 @@ const Experience = (props) => {
           {editExpSection && (
             <div>
               <button className="experience-buttons">
-                <HiTrash className="experience-buttons-icon" />
+                <HiTrash
+                  onClick={() => {
+                    dispatch({
+                      type: ADD_CURRENT_EXP_DATA,
+                      payload: experience,
+                    });
+                    console.log(
+                      `We want to delete the experience with id: ${experience._id} and ${currentProfile._id}/experiences/${experience._id}`
+                    );
+                    dispatch(
+                      fetchProfile(
+                        endPoint,
+                        options,
+                        `${currentProfile._id}/experiences/${experience._id}`,
+                        action
+                      )
+                    );
+                  }}
+                  className="experience-buttons-icon"
+                />
               </button>
               <button className="experience-buttons">
                 <HiOutlinePencil

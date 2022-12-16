@@ -637,7 +637,6 @@ a {
   border-color: transparent;
   border-radius: 50px;
   font-weight: 900;
-  width: 60px;
 }
 
 @media screen and (max-width: 1000px) {

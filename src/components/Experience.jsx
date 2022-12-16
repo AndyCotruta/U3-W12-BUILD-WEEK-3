@@ -163,7 +163,7 @@ const Experience = (props) => {
                       payload: experience,
                     });
                     console.log(
-                      `We want to delete the experience with id: ${experience._id} and ${currentProfile._id}/experiences/${experience._id}`
+                      `We want to delete the experience with id: ${experience._id} and completeEndpoint ${currentProfile._id}/experiences/${experience._id}`
                     );
                     dispatch(
                       fetchProfile(

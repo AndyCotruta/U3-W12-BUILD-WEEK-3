@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 export const ADD_ALL_PROFILES = "ADD_ALL_PROFILES";
 export const ADD_CLICKED_PROFILE = "ADD_CLICKED_PROFILE";
 export const ADD_MY_PROFILE = "ADD_MY_PROFILE";
+export const CHANGE_SHOW_PROFILE_MODAL = "CHANGE_SHOW_PROFILE_MODAL";
 
 export const GET_EXPERIENCE = "GET_EXPERIENCE";
 export const GET_EXPERIENCE_ERROR = "GET_EXPERIENCE_ERROR";

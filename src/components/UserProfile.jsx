@@ -94,7 +94,7 @@ const UserProfile = () => {
               </div>
             </div>
           </Col>
-          <Col sm={12} md={6} lg={4}>
+          <Col sm={12} md={6} lg={4} className="px-0">
             <RightSideBar />
           </Col>
         </>

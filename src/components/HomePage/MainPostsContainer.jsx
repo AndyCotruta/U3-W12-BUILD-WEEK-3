@@ -12,7 +12,7 @@ const MainPostsContainer = () => {
 
   return (
     <>
-      <Col>
+      <Col sm={12} md={9} lg={7}>
         <WritePost />
         <div className="d-flex align-items-center justify-content-between fs-14">
           <hr className="w-75"></hr>

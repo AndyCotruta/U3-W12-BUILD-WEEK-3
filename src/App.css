@@ -447,7 +447,7 @@ a {
 .mainContainerPost {
   background-color: var(--linkedin-white);
   border-radius: 10px;
-  width: 550px;
+  /* width: 550px; */
   border: solid 1px var(--linkedin-white-grey);
   /* height: 116px; */
 }
@@ -509,7 +509,7 @@ a {
   border: 1px solid var(--linkedin-white-grey);
   border-radius: 8px;
   padding-inline: 1rem;
-  width: 320px;
+  width: 100%;
   height: auto;
 }
 
@@ -521,7 +521,7 @@ a {
   border: 1px solid var(--linkedin-white-grey);
   border-top: none;
   background-color: var(--linkedin-white);
-  width: 320px;
+  width: 100%;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   padding: 8px;
@@ -621,4 +621,49 @@ a {
 
 .courses-play-btn:hover {
   box-shadow: inset 0px 0px 0px 2px var(--linkedin-white);
+}
+
+@media screen and (max-width: 1000px) {
+  /* .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  } */
+
+  .menu-on-collapse {
+    display: flex;
+    flex-direction: column;
+    transition: 1s;
+  }
+
+  .elapsed-menu {
+    background-color: white;
+    padding: 10px;
+    box-shadow: 6px 7px 10px -4px grey;
+    border-radius: 0 0 10px 10px;
+    border: 1px solid gray;
+  }
+
+  .logo-on-collapse {
+    align-items: baseline !important;
+  }
+
+  .work {
+    border-top: solid 0.5px grey;
+    border-left: solid 0.5px transparent;
+  }
+
+  .profile-picture-mini img {
+    transform: translateX(50%);
+    left: 40%;
+  }
+
+  .form-inline {
+    display: none;
+  }
+  .profile-text-mini {
+    display: none !important;
+  }
 }

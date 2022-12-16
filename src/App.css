@@ -40,7 +40,7 @@ body {
 }
 
 .profile-main {
-  width: 782px;
+  /* width: 782px; */
   border-radius: 10px;
   border: solid 1px var(--linkedin-white-grey);
   overflow: auto;
@@ -195,7 +195,7 @@ svg {
 }
 
 .cd-width {
-  width: 782px;
+  /* width: 782px; */
 }
 
 .ff {

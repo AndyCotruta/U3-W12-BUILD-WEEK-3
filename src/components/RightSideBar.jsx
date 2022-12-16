@@ -40,7 +40,7 @@ const RightSideBar = () => {
   const allProfiles = useSelector((state) => state.profiles.allProfiles);
 
   return (
-    <Col className="d-flex flex-column align-items-end " sm={12} md={12} lg={3}>
+    <Col className="d-flex flex-column align-items-end ">
       <ul className="sidebarUL mb-1">
         <EditLi text="Edit public profile & URL" />
         <EditLi text="Add profile in another language" />

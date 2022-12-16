@@ -2,7 +2,8 @@ const GreyBorderBtn = (props) => {
   return (
     <button className="GR-Btn d-flex align-items-center">
       {props.icon}
-      <div className="ml-1">{props.content}</div>
+      <div className="mx-1">{props.content}</div>
+      {props.iconTwo}
     </button>
   );
 };

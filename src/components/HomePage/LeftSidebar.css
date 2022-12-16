@@ -24,11 +24,6 @@
   --main-font: "Lato", sans-serif;
 }
 
-.left-side-col {
-  /* max-width: 225px !important; */
-  /* padding: 0 !important; */
-}
-
 .profile-cover-mini img {
   height: 56px;
   width: 100%;
@@ -44,7 +39,10 @@
   border-radius: 50%;
   border: 2px solid var(--linkedin-white);
   top: 20px;
+
   transform: translateX(60%);
+
+  cursor: pointer;
 }
 
 .left-profile-mini {
@@ -101,5 +99,9 @@
 
   .navbar-toggler {
     border: none;
+  }
+
+  .username-mini {
+    cursor: pointer;
   }
 }

@@ -20,7 +20,12 @@ const MainPostsContainer = () => {
             Sort by: <span className="fw-800">Top</span>
           </span>
         </div>
-        {allPosts.length !== 0 && allPosts.slice(Math.floor(Math.random(0, allPosts.length)), 20).map((post) => <PostsDisplay post={post} key={post._id} />)}
+        {allPosts.length !== 0 &&
+          allPosts
+            .slice(Math.floor(Math.random(0, allPosts.length)), 10)
+            .map((post, i) => (
+              <PostsDisplay post={post} key={post._id} i={i} />
+            ))}
       </Col>
     </>
   );

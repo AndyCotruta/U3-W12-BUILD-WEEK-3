@@ -6,7 +6,7 @@ import share from "../../Icon/Send 2.svg";
 const PostsDisplay = (props) => {
   return (
     <>
-      <div className="mainContainerPost">
+      <div className="mainContainerPost mb-3">
         <div className="d-flex align-items-center p-3">
           <div>
             <img className="userPicturePost mr-3" src="https://picsum.photos/200/" alt="profile.name" />

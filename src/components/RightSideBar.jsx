@@ -10,39 +10,20 @@ import { ADD_ALL_PROFILES, fetchProfile } from "../redux/actions/actions";
 
 const RightSideBar = () => {
   const messageIcon = (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 16 16"
-      data-supported-dps="16x16"
-      fill="currentColor"
-      className="mercado-match"
-      width="16"
-      height="16"
-      focusable="false"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
       <path d="M14 2L0 6.67l5 2.64 5.67-3.98L6.7 11l2.63 5L14 2z"></path>
     </svg>
   );
 
   const dropdownIcon = (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 16 16"
-      data-supported-dps="16x16"
-      fill="currentColor"
-      className="mercado-match"
-      width="16"
-      height="16"
-      focusable="false"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
       <path d="M1 5l7 4.61L15 5v2.39L8 12 1 7.39z"></path>
     </svg>
   );
 
   const dispatch = useDispatch();
   const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
+  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
   const options = {
     method: "GET",
     headers: {
@@ -59,7 +40,7 @@ const RightSideBar = () => {
   const allProfiles = useSelector((state) => state.profiles.allProfiles);
 
   return (
-    <Col md={4}>
+    <Col className="d-flex flex-column align-items-end px-0">
       <ul className="sidebarUL mb-1">
         <EditLi text="Edit public profile & URL" />
         <EditLi text="Add profile in another language" />
@@ -79,20 +60,11 @@ const RightSideBar = () => {
         ))}
       </ul>
       <ActionLi text="Show More" icon={dropdownIcon} />
-      <ul className="sidebarUL profilesUL mb-0">
+      <div className="sidebarUL profilesUL mb-0 sticky">
         <div className="fw-bold pt-3 fs-20">
           <div className="d-flex align-items-center">
             <span className="linkedin-d-blue mr-1">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 14 14"
-                data-supported-dps="14x14"
-                fill="currentColor"
-                className="mercado-match"
-                width="14"
-                height="14"
-                focusable="false"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" data-supported-dps="14x14" fill="currentColor" className="mercado-match" width="14" height="14" focusable="false">
                 <g>
                   <path
                     className="background-mercado"
@@ -120,7 +92,7 @@ const RightSideBar = () => {
             courseName="SketchUp 2020 Essential Training"
           />
         </div>
-      </ul>
+      </div>
       <ActionLi text="See my recommendations" />
     </Col>
   );

@@ -1,4 +1,5 @@
 import {
+  ADD_CURRENT_EXP_DATA,
   ADD_EXPERIENCE,
   CHANGE_EDIT_EXP_SECTION,
   CHANGE_SHOW_MODAL,
@@ -12,6 +13,7 @@ const initialState = {
   addedExp: null,
   showModal: false,
   showEditExpSection: false,
+  currentExpData: null,
 };
 
 const experienceReducer = (state = initialState, action) => {
@@ -41,6 +43,13 @@ const experienceReducer = (state = initialState, action) => {
       return {
         ...state,
         showEditExpSection: action.payload,
+      };
+    }
+
+    case ADD_CURRENT_EXP_DATA: {
+      return {
+        ...state,
+        currentExpData: action.payload,
       };
     }
 

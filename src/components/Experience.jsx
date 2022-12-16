@@ -4,6 +4,7 @@ import {
   CHANGE_SHOW_MODAL,
   fetchProfile,
   GET_EXPERIENCE,
+  ADD_CURRENT_EXP_DATA,
 } from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { HiOutlinePlus } from "react-icons/hi";
@@ -19,7 +20,9 @@ const Experience = (props) => {
   const showModal = useSelector((state) => state.experience.showModal);
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const clickedProfile = useSelector((state) => state.profiles.clickedProfile);
-  const addedExpData = useSelector((state) => state.experience.addedExpData);
+  const currentExpData = useSelector(
+    (state) => state.experience.currentExpData
+  );
   const editExpSection = useSelector(
     (state) => state.experience.showEditExpSection
   );
@@ -96,9 +99,14 @@ const Experience = (props) => {
 
           <ExperienceModal
             currentProfile={props.currentProfile}
+            currentExpData={currentExpData}
             show={showModal}
             onHide={() => {
               dispatch({ type: CHANGE_SHOW_MODAL, payload: false });
+              dispatch({
+                type: ADD_CURRENT_EXP_DATA,
+                payload: null,
+              });
             }}
           />
         </div>
@@ -137,6 +145,10 @@ const Experience = (props) => {
                   className="experience-buttons-icon"
                   onClick={() => {
                     dispatch({ type: CHANGE_SHOW_MODAL, payload: true });
+                    dispatch({
+                      type: ADD_CURRENT_EXP_DATA,
+                      payload: experience,
+                    });
                   }}
                 />
               </button>

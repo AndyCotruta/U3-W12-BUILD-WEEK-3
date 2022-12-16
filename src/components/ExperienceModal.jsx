@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Modal, Button, Form, Row, Col, FormControl } from "react-bootstrap";
+import { propTypes } from "react-bootstrap/esm/Image";
 import { useDispatch, useSelector } from "react-redux";
+import { parseISO, format } from "date-fns";
 import {
   ADD_EXPERIENCE,
   CHANGE_SHOW_MODAL,
@@ -57,7 +59,8 @@ const ExperienceModal = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className="mx-3">
-          Add Experience
+          {props.currentExpData ? <span>Edit</span> : <span>Add</span>}{" "}
+          Experience{" "}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -71,7 +74,11 @@ const ExperienceModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Role*</Form.Label>
             <Form.Control
-              value={addedData.role}
+              value={
+                props.currentExpData
+                  ? props.currentExpData.role
+                  : addedData.role
+              }
               onChange={handleChange}
               name="role"
               type="text"
@@ -103,7 +110,11 @@ const ExperienceModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Company name*</Form.Label>
             <Form.Control
-              value={addedData.company}
+              value={
+                props.currentExpData
+                  ? props.currentExpData.company
+                  : addedData.company
+              }
               name="company"
               onChange={handleChange}
               type="text"
@@ -113,7 +124,11 @@ const ExperienceModal = (props) => {
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Location*</Form.Label>
             <Form.Control
-              value={addedData.area}
+              value={
+                props.currentExpData
+                  ? props.currentExpData.area
+                  : addedData.area
+              }
               name="area"
               onChange={handleChange}
               type="text"
@@ -135,7 +150,14 @@ const ExperienceModal = (props) => {
               <Col>
                 <Form.Control
                   type="date"
-                  value={addedData.startDate}
+                  value={
+                    props.currentExpData
+                      ? format(
+                          parseISO(props.currentExpData.startDate),
+                          "yyyy-MM-dd"
+                        )
+                      : addedData.startDate
+                  }
                   name="startDate"
                   onChange={handleChange}
                   placeholder="month"
@@ -149,7 +171,14 @@ const ExperienceModal = (props) => {
               <Col>
                 <Form.Control
                   type="date"
-                  value={addedData.endDate}
+                  value={
+                    props.currentExpData
+                      ? format(
+                          parseISO(props.currentExpData.endDate),
+                          "yyyy-MM-dd"
+                        )
+                      : addedData.endDate
+                  }
                   name="endDate"
                   onChange={handleChange}
                   placeholder="month"
@@ -160,7 +189,11 @@ const ExperienceModal = (props) => {
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Description</Form.Label>
             <Form.Control
-              value={addedData.description}
+              value={
+                props.currentExpData
+                  ? props.currentExpData.description
+                  : addedData.description
+              }
               name="description"
               onChange={handleChange}
               as="textarea"
@@ -170,17 +203,21 @@ const ExperienceModal = (props) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button
-          onClick={() => {
-            dispatch({
-              type: CHANGE_SHOW_MODAL,
-              payload: false,
-            });
-            dispatch(fetchProfile(endPoint, options, id, action));
-          }}
-        >
-          Save
-        </Button>
+        {props.currentExpData ? (
+          <Button>Update</Button>
+        ) : (
+          <Button
+            onClick={() => {
+              dispatch({
+                type: CHANGE_SHOW_MODAL,
+                payload: false,
+              });
+              dispatch(fetchProfile(endPoint, options, id, action));
+            }}
+          >
+            Save
+          </Button>
+        )}
       </Modal.Footer>
     </Modal>
   );

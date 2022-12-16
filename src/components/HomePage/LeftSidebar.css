@@ -49,6 +49,7 @@
   background-color: var(--linkedin-white);
   height: 260px;
   border-radius: 10px 10px 0 0;
+  border: solid 1px var(--linkedin-white-grey);
 }
 
 .profile-text-mini {
@@ -67,7 +68,11 @@
   padding-block: 10px;
   background-color: white;
   border-radius: 0 0 10px 10px;
+  border: solid 1px var(--linkedin-white-grey);
+  border-top: solid 1px transparent;
   cursor: pointer;
+  position: sticky;
+  top: 222px;
 }
 .profile-text-mini2:hover {
   background-color: rgb(245, 245, 245);
@@ -78,6 +83,7 @@
   border-radius: 10px 10px 0 0;
   padding: 15px;
   border-bottom: 1px solid var(--linkedin-white-grey);
+  border: solid 1px var(--linkedin-white-grey);
   position: sticky;
   top: 60px;
 }

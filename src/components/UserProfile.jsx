@@ -53,7 +53,7 @@ const UserProfile = () => {
     <>
       {editExpSection ? (
         <>
-          <Col sm={12} md={6} lg={8} className="px-0">
+          <Col sm={12} md={6} lg={8}>
             <ProfileSection currentProfile={currentProfile} />
             <div className="cards-main-container cd-width">
               {experiences.length !== 0 && (
@@ -69,7 +69,7 @@ const UserProfile = () => {
         </>
       ) : (
         <>
-          <Col sm={12} md={6} lg={8} className="px-0">
+          <Col sm={12} md={6} lg={8}>
             <ProfileSection currentProfile={currentProfile} />
             <div className="cards-main-container cd-width">
               <AboutUser currentProfile={currentProfile} />

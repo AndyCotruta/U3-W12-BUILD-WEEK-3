@@ -11,6 +11,9 @@ import {
 } from "../redux/actions/actions";
 
 const ExperienceModal = (props) => {
+  const currentExpData = useSelector(
+    (state) => state.experience.currentExpData
+  );
   // const addedData = {
   //   role: "CTO",
   //   company: "Strive School",
@@ -52,8 +55,8 @@ const ExperienceModal = (props) => {
   };
   const id = `${props.currentProfile._id}/experiences`;
   const editId =
-    props.currentExpData &&
-    `${props.currentProfile._id}/experiences/${props.currentExpData._id}`;
+    currentExpData &&
+    `${props.currentProfile._id}/experiences/${currentExpData._id}`;
   const action = ADD_EXPERIENCE;
   const dispatch = useDispatch();
 
@@ -66,8 +69,7 @@ const ExperienceModal = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className="mx-3">
-          {props.currentExpData ? <span>Edit</span> : <span>Add</span>}{" "}
-          Experience{" "}
+          {currentExpData ? <span>Edit</span> : <span>Add</span>} Experience{" "}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -81,11 +83,7 @@ const ExperienceModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Role*</Form.Label>
             <Form.Control
-              value={
-                props.currentExpData
-                  ? props.currentExpData.role
-                  : addedData.role
-              }
+              value={currentExpData ? currentExpData.role : addedData.role}
               onChange={handleChange}
               name="role"
               type="text"
@@ -118,9 +116,7 @@ const ExperienceModal = (props) => {
             <Form.Label>Company name*</Form.Label>
             <Form.Control
               value={
-                props.currentExpData
-                  ? props.currentExpData.company
-                  : addedData.company
+                currentExpData ? currentExpData.company : addedData.company
               }
               name="company"
               onChange={handleChange}
@@ -131,11 +127,7 @@ const ExperienceModal = (props) => {
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Location*</Form.Label>
             <Form.Control
-              value={
-                props.currentExpData
-                  ? props.currentExpData.area
-                  : addedData.area
-              }
+              value={currentExpData ? currentExpData.area : addedData.area}
               name="area"
               onChange={handleChange}
               type="text"
@@ -158,11 +150,8 @@ const ExperienceModal = (props) => {
                 <Form.Control
                   type="date"
                   value={
-                    props.currentExpData
-                      ? format(
-                          parseISO(props.currentExpData.startDate),
-                          "yyyy-MM-dd"
-                        )
+                    currentExpData && currentExpData.startDate !== null
+                      ? format(parseISO(currentExpData.startDate), "yyyy-MM-dd")
                       : addedData.startDate
                   }
                   name="startDate"
@@ -179,11 +168,8 @@ const ExperienceModal = (props) => {
                 <Form.Control
                   type="date"
                   value={
-                    props.currentExpData
-                      ? format(
-                          parseISO(props.currentExpData.endDate),
-                          "yyyy-MM-dd"
-                        )
+                    currentExpData && currentExpData.startDate !== null
+                      ? format(parseISO(currentExpData.endDate), "yyyy-MM-dd")
                       : addedData.endDate
                   }
                   name="endDate"
@@ -197,8 +183,8 @@ const ExperienceModal = (props) => {
             <Form.Label>Description</Form.Label>
             <Form.Control
               value={
-                props.currentExpData
-                  ? props.currentExpData.description
+                currentExpData
+                  ? currentExpData.description
                   : addedData.description
               }
               name="description"
@@ -210,7 +196,7 @@ const ExperienceModal = (props) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        {props.currentExpData ? (
+        {currentExpData ? (
           <Button
             onClick={() => {
               dispatch({

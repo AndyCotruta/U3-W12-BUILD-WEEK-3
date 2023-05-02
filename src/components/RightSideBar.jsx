@@ -43,13 +43,7 @@ const dropdownIcon = (
 );
 
 const RightSideBar = () => {
-  const dispatch = useDispatch();
-
   const allProfiles = useSelector((state) => state.profiles.allProfiles);
-
-  useEffect(() => {
-    dispatch(fetchAllProfiles());
-  }, []);
 
   return (
     <Col className="d-flex flex-column align-items-end ">

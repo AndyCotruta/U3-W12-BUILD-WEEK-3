@@ -11,6 +11,8 @@ import UserProfile from "./components/UserProfile";
 import RightSideBar from "./components/RightSideBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
+import LogIn from "./components/LogInPage/LogIn";
+import AnimationPage from "./components/AnimationPage/AnimationPage";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
             <Routes>
               <Route path="/profile/:userId" element={<UserProfile />} />
               <Route path="/" element={<HomePage />} />
+              <Route path="/login" element={<LogIn />} />
+              <Route path="/redirect" element={<AnimationPage />} />
             </Routes>
           </Row>
           <MainFooter />

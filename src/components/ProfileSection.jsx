@@ -40,7 +40,7 @@ const ProfileSection = (props) => {
           <div className="d-flex justify-content-between">
             {" "}
             <p className="username fs-24 fw-700 margin-0">
-              {props.currentProfile.name} {props.currentProfile.surname}
+              {props.currentProfile.firstName} {props.currentProfile.lastName}
             </p>{" "}
             {params.userId === myProfile._id && (
               <button className="experience-buttons">

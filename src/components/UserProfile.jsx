@@ -21,12 +21,16 @@ const UserProfile = () => {
   const clickedProfile = useSelector((state) => state.profiles.clickedProfile);
   const experiences = useSelector((state) => state.experience.expData);
   const addedExpData = useSelector((state) => state.experience.addedExpData);
-  const editExpSection = useSelector((state) => state.experience.showEditExpSection);
+  const editExpSection = useSelector(
+    (state) => state.experience.showEditExpSection
+  );
 
-  const currentProfile = params.userId === myProfile._id ? myProfile : clickedProfile;
+  const currentProfile =
+    params.userId === myProfile._id ? myProfile : clickedProfile;
 
   const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
-  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
   const options = {
     method: "GET",
     headers: {
@@ -45,10 +49,6 @@ const UserProfile = () => {
     dispatch(fetchProfile(endPoint, options, id, action));
   }, [addedExpData]);
 
-  useEffect(() => {
-    console.log(experiences);
-  }, []);
-
   return (
     <>
       {editExpSection ? (
@@ -58,7 +58,10 @@ const UserProfile = () => {
             <div className="cards-main-container cd-width">
               {experiences.length !== 0 && (
                 <div className="experience cd cd-width ff">
-                  <Experience currentProfile={currentProfile} experiences={experiences} />
+                  <Experience
+                    currentProfile={currentProfile}
+                    experiences={experiences}
+                  />
                 </div>
               )}
             </div>
@@ -76,7 +79,14 @@ const UserProfile = () => {
               <div className="activity">
                 <Activity />
               </div>
-              <div className="experience cd cd-width ff">{experiences.length !== 0 && <Experience currentProfile={currentProfile} experiences={experiences} />}</div>
+              <div className="experience cd cd-width ff">
+                {experiences.length !== 0 && (
+                  <Experience
+                    currentProfile={currentProfile}
+                    experiences={experiences}
+                  />
+                )}
+              </div>
               <div className="education cd cd-width ff">
                 <Education />
               </div>

@@ -7,6 +7,7 @@ globalFonts {
   /*color palette*/
 
   --linkedin-dark-blue: #0a66c2;
+  --linkedin-darker-blue: #035f97;
   --linkedin-light-blue: #70b5f9;
   --linkedin-super-light-blue: #e3f0fe;
   --linkedin-dark-grey: #00000099;
@@ -680,13 +681,99 @@ a {
     display: none !important;
   }
 }
-/* ............................................LeftSideBar............................................. */
-.left-side-bar {
-  width: 400px;
+/* ............................................LogIn............................................. */
+.login-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
 }
 
-.left-profile {
-  background-color: var(--linkedin-white);
-  border-radius: 10px 10px 0 0;
-  border: solid 1px var(--linkedin-white-grey);
+.login-welcome-text {
+  color: var(--linkedin-brown);
+  font-size: 3rem;
+  padding-bottom: 2rem;
 }
+
+.login-input-area {
+  max-width: 408px;
+}
+
+.login-input {
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 2px solid var(--linkedin-dark-grey);
+  border-radius: 4px;
+}
+
+.login-agreement-text {
+  color: var(--linkedin-dark-blue);
+  font-weight: bold;
+}
+
+.login-image {
+  width: 700px;
+  height: 560px;
+}
+/* ............................................LogIn............................................. */
+
+/* ............................................AnimationPage............................................. */
+
+.animation-container {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.animation-text {
+  font-size: 3rem;
+}
+
+.animation-text-lnkdn {
+  color: var(--linkedin-dark-blue);
+  font-weight: bold;
+}
+
+.animation-progress {
+  width: 60%;
+}
+
+/* ............................................AnimationPage............................................. */
+
+/* .........................................Buttons.............................................. */
+
+.blue-button-container {
+  background-color: var(--linkedin-dark-blue);
+  text-align: center;
+  padding-block: 1rem;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+
+.blue-button-container:hover {
+  background-color: var(--linkedin-darker-blue);
+}
+
+.blue-button-text {
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* .........................................Buttons.............................................. */
+
+/* .........................................Responsive Design.................................... */
+
+@media screen and (max-width: 768px) {
+  .login-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .login-welcome-text {
+    font-size: 2rem;
+  }
+}
+
+/* .........................................Responsive Design.................................... */

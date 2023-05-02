@@ -12,13 +12,7 @@ import {
 import { useEffect } from "react";
 
 const HomePage = () => {
-  const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.profiles.myProfile);
-
-  useEffect(() => {
-    dispatch(fetchProfile());
-    dispatch(fetchPosts());
-  }, []);
 
   return (
     <div className="d-flex">

@@ -21,8 +21,8 @@ const ProfileAd = () => {
         </div>
       </li>
       <li className="pt-3 text-center linkedin-d-grey">
-        <span>{myProfile.name}</span>, you might like to follow{" "}
-        <span className="fw-bold linkedin-d-grey">Fraport AG</span>
+        <span className="fw-bold">{myProfile.firstName}</span>, you might like
+        to follow <span className="fw-bold linkedin-d-grey">Fraport AG</span>
       </li>
       <li className="py-3 text-center">
         <BlueBorderBtn content="Follow" />

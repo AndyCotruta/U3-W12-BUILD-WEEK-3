@@ -194,10 +194,6 @@ svg {
   margin: 0;
 }
 
-.cd-width {
-  /* width: 782px; */
-}
-
 .ff {
   font-family: var(--main-font);
 }
@@ -683,4 +679,14 @@ a {
   .profile-text-mini {
     display: none !important;
   }
+}
+/* ............................................LeftSideBar............................................. */
+.left-side-bar {
+  width: 400px;
+}
+
+.left-profile {
+  background-color: var(--linkedin-white);
+  border-radius: 10px 10px 0 0;
+  border: solid 1px var(--linkedin-white-grey);
 }

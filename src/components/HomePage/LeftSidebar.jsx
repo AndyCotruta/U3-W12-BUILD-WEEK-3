@@ -37,19 +37,35 @@ const LeftSidebar = (props) => {
               }}
             >
               <p className="username-mini fs-16 fw-700 margin-0">
-                {props.myProfileData.name} {props.myProfileData.surname}
+                {props.myProfileData.firstName} {props.myProfileData.lastName}
               </p>
-              <p className="user-role-mini fs-12">{props.myProfileData.title}</p>
+              <p className="user-role-mini fs-12">
+                {props.myProfileData.title}
+              </p>
             </div>
-            <div className="profile-text-mini collapse-hide mt-3 align-items-start pl-2">
-              <p className="username-mini fs-12 fw-700 margin-0">Achieve your goals faster</p>
-              <p className="user-role-mini fs-12 fw-800 d-flex align-items-center mt-1">
-                <img src={premium} alt="" style={{ width: "20px" }} className="mr-1" /> Upgrade your plan
+            <div className="profile-text-mini collapse-hide align-items-start px-2">
+              <p className="username-mini fs-12 fw-700 margin-0">
+                Achieve your goals faster
               </p>
+              <div className="user-role-mini fs-12 fw-800 d-flex align-items-center mt-1">
+                <img
+                  src={premium}
+                  alt=""
+                  style={{ width: "20px" }}
+                  className="mr-1"
+                />{" "}
+                Upgrade your plan
+              </div>
             </div>
             <div className="profile-text-mini2 collapse-hide  align-items-start pl-2">
               <p className="user-role-mini fs-12 fw-800 d-flex align-items-center mt-1">
-                <img src={items} alt="" style={{ width: "13px" }} className="mr-1" /> My items
+                <img
+                  src={items}
+                  alt=""
+                  style={{ width: "13px" }}
+                  className="mr-1"
+                />{" "}
+                My items
               </p>
             </div>
           </div>
@@ -59,21 +75,47 @@ const LeftSidebar = (props) => {
           <p className="ml-0 mb-2 fs-12">Recent</p>
           <div className="ml-2 fs-12 fw-800">
             <p className="mb-2 d-flex">
-              <img src={hashtag} alt="" className="mr-2" style={{ width: "12px" }} /> Recent
+              <img
+                src={hashtag}
+                alt=""
+                className="mr-2"
+                style={{ width: "12px" }}
+              />{" "}
+              Recent
             </p>
             <p className="mb-2 d-flex">
-              <img src={hashtag} alt="" className="mr-2" style={{ width: "12px" }} /> Recent
+              <img
+                src={hashtag}
+                alt=""
+                className="mr-2"
+                style={{ width: "12px" }}
+              />{" "}
+              Recent
             </p>
             <p className="mb-2 d-flex">
-              <img src={hashtag} alt="" className="mr-2" style={{ width: "12px" }} /> Recent
+              <img
+                src={hashtag}
+                alt=""
+                className="mr-2"
+                style={{ width: "12px" }}
+              />{" "}
+              Recent
             </p>
             <p className="mb-2 d-flex">
-              <img src={hashtag} alt="" className="mr-2" style={{ width: "12px" }} /> Recent
+              <img
+                src={hashtag}
+                alt=""
+                className="mr-2"
+                style={{ width: "12px" }}
+              />{" "}
+              Recent
             </p>
           </div>
         </div>
         <div className="profile-text-mini2 collapse-hide align-items-center">
-          <p className="user-role-mini fs-12 fw-800 d-flex align-items-center mt-1">Discover more</p>
+          <p className="user-role-mini fs-12 fw-800 d-flex align-items-center mt-1">
+            Discover more
+          </p>
         </div>
       </Col>
     </>

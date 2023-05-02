@@ -16,8 +16,12 @@ const PostsDisplay = (props) => {
             />
           </div>
           <div>
-            <span className="fs-14 fw-700 mr-2">{props.post.user.name}</span>
-            <span className="fs-14 fw-700 mr-2">{props.post.user.surname}</span>
+            <span className="fs-14 fw-700 mr-2">
+              {props.post.user.firstName}
+            </span>
+            <span className="fs-14 fw-700 mr-2">
+              {props.post.user.lastName}
+            </span>
             <div className="fs-12  ">{props.post.user.title}</div>
           </div>
         </div>

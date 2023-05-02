@@ -44,7 +44,7 @@ const ProfilesLi = (props) => {
               dispatch(fetchProfile(endPoint, options, id, action));
             }}
           >
-            {props.profile.name} {props.profile.surname} |{" "}
+            {props.profile.firstName} {props.profile.lastName} |{" "}
           </span>
           <span className="linkedin-d-grey">1st</span>
         </li>

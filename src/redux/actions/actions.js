@@ -17,17 +17,63 @@ export const CHANGE_CLICKED_SEARCH_STATUS = "CHANGE_CLICKED_SEARCH_STATUS";
 export const ADD_SEARCH_RESULTS = "ADD_SEARCH_RESULTS";
 export const ADD_QUERY = "ADD_QUERY";
 
-export const fetchProfile = (endPoint, options, id, action) => {
+export const fetchProfile = () => {
   return async (dispatch) => {
-    let response = await fetch(endPoint + id, options);
     try {
+      let response = await fetch("http://localhost:3001/users/me", {
+        method: "GET",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDUxMThkYjQ5NDU2ZjlkYzZhYTE2YWIiLCJpYXQiOjE2ODMwMzYzOTEsImV4cCI6MTY4MzY0MTE5MX0.fW4r4gkjxl1b0V005_dkzCfM9MXPVagXX_8FIqBvRCM",
+        },
+      });
       if (response.ok) {
         let data = await response.json();
         console.log(data);
         dispatch({
-          type: action,
+          type: ADD_MY_PROFILE,
           payload: data,
         });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const fetchPosts = () => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch("http://localhost:3001/posts");
+      if (response.ok) {
+        let data = await response.json();
+        console.log(data);
+        dispatch({
+          type: ADD_ALL_POSTS,
+          payload: data,
+        });
+      } else {
+        console.log(response);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const fetchAllProfiles = () => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch("http://localhost:3001/users");
+      if (response.ok) {
+        let data = await response.json();
+        console.log(data);
+        dispatch({
+          type: ADD_ALL_PROFILES,
+          payload: data,
+        });
+      } else {
+        console.log(response);
       }
     } catch (error) {
       console.log(error);

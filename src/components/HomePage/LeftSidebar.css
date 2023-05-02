@@ -47,7 +47,6 @@
 
 .left-profile-mini {
   background-color: var(--linkedin-white);
-  height: 260px;
   border-radius: 10px 10px 0 0;
   border: solid 1px var(--linkedin-white-grey);
 }

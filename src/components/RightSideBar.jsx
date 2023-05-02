@@ -99,17 +99,17 @@ const RightSideBar = () => {
         </div>
 
         <CoursesLi
-          imgSource="https://media-exp1.licdn.com/dms/image/C560DAQFo2QlNcSLQiQ/learning-public-crop_60_100/0/1629914140054?e=1671465600&amp;v=beta&amp;t=VpTBQKZtVZyxoSddJNiZ6huTp5KgVeupLuzPNQ4prwc"
+          imgSource="https://backend.cleverclipstudios.com/wp-content/uploads/2022/04/Blogpost-E-Learnings-1024x576.jpg"
           courseName="Creating Illustrative Design"
         />
         <CoursesLi
-          imgSource="https://media-exp1.licdn.com/dms/image/C4E0DAQHQap8zLSQmXQ/learning-public-crop_60_100/0/1568062505669?e=1671465600&v=beta&t=keZZ9-BZiPFurB4N8qhbY-bLm2JaPkmtE-ylMZpjCgU"
+          imgSource="https://observatory.tec.mx/wp-content/uploads/2019/03/bigstock-Vector-Creative-Illustration-256954996.jpg"
           courseName="Grasshopper: Tips, Tricks, and Techniques"
         />
         <div className="mb-3">
           {" "}
           <CoursesLi
-            imgSource="https://media-exp1.licdn.com/dms/image/C560DAQH6wUHzTQv7Kw/learning-public-crop_60_100/0/1591031927513?e=1671465600&v=beta&t=TzYQME62ph3FSi0X1_Hnpo_1CHM27JB5F4NKE_4N-Cg"
+            imgSource="https://theeducationhub.org.nz/wp-content/uploads/2021/01/1.-What-teachers-should-know-scaled.jpeg"
             courseName="SketchUp 2020 Essential Training"
           />
         </div>

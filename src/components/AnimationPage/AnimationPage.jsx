@@ -13,8 +13,10 @@ function AnimationPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const accessToken = localStorage.getItem("accessToken");
+
   useEffect(() => {
-    dispatch(fetchProfile());
+    dispatch(fetchProfile(accessToken));
     dispatch(fetchAllProfiles());
     dispatch(fetchPosts());
     setTimeout(() => {

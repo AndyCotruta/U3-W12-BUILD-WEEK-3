@@ -17,14 +17,13 @@ export const CHANGE_CLICKED_SEARCH_STATUS = "CHANGE_CLICKED_SEARCH_STATUS";
 export const ADD_SEARCH_RESULTS = "ADD_SEARCH_RESULTS";
 export const ADD_QUERY = "ADD_QUERY";
 
-export const fetchProfile = () => {
+export const fetchProfile = (accessToken) => {
   return async (dispatch) => {
     try {
       let response = await fetch("http://localhost:3001/users/me", {
         method: "GET",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDUxMThkYjQ5NDU2ZjlkYzZhYTE2YWIiLCJpYXQiOjE2ODMwMzYzOTEsImV4cCI6MTY4MzY0MTE5MX0.fW4r4gkjxl1b0V005_dkzCfM9MXPVagXX_8FIqBvRCM",
+          Authorization: `Bearer ${accessToken}`,
         },
       });
       if (response.ok) {

@@ -705,6 +705,12 @@ a {
   border-radius: 4px;
 }
 
+.login-wrong-credentials {
+  color: red;
+  font-weight: bold;
+  padding-top: 0.5rem;
+}
+
 .login-agreement-text {
   color: var(--linkedin-dark-blue);
   font-weight: bold;

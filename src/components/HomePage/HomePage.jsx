@@ -10,15 +10,25 @@ import {
   fetchProfile,
 } from "../../redux/actions/actions";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   const myProfile = useSelector((state) => state.profiles.myProfile);
+
+  useEffect(() => {
+    if (myProfile === null) {
+      navigate("/login");
+    } else {
+      return;
+    }
+  }, []);
 
   return (
     <div className="d-flex">
       {myProfile && (
         <>
-          {" "}
           <LeftSidebar myProfileData={myProfile} />
           <MainPostsContainer />
           <RightSideBar />

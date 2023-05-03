@@ -9,6 +9,7 @@ function LogIn() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   const handleLogin = async () => {
     try {
@@ -21,11 +22,11 @@ function LogIn() {
       });
       if (response.ok) {
         let data = await response.json();
-        console.log(data);
         localStorage.setItem("accessToken", data.accessToken);
         navigate("/redirect");
       } else {
         console.log("Error while login");
+        setError(true);
       }
     } catch (error) {
       console.log(error);
@@ -59,19 +60,23 @@ function LogIn() {
               }}
             />
           </div>
+          {error && (
+            <div className="login-wrong-credentials">
+              Email or Password might be wrong.
+            </div>
+          )}
           <div className="py-3">
             By clicking Agree & Join, you agree to the LinkedIn{" "}
             <span className="login-agreement-text">User Agreement</span>,
-            <span className="login-agreement-text">Privacy Policy</span> and{" "}
+            <span className="login-agreement-text"> Privacy Policy</span> and{" "}
             <span className="login-agreement-text">Cookie Policy</span>
           </div>
           <div
             onClick={() => {
-              console.log("We are clickingAgree");
               handleLogin();
             }}
           >
-            <BlueButton text={"Agree & Join"} />
+            <BlueButton text={"Log In"} />
           </div>
         </div>
       </div>
@@ -80,7 +85,7 @@ function LogIn() {
         <img
           className="login-image"
           src="lnkdn-login.svg"
-          alt="Man siting in front of a desk and"
+          alt="Man sitting in front of a desk and working on a computer"
         />
       </div>
     </div>
